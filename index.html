@@ -270,9 +270,10 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .admin-box input,.admin-box textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:14px;font-family:'Inter'}
 .admin-row{display:flex;gap:10px;margin-top:22px}
 /* ---------- Logo marquee ---------- */
-.logo-marquee{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:30px 0}
-.lm-track{display:inline-flex;gap:30px;white-space:nowrap;animation:tick 40s linear infinite;align-items:center;padding-right:30px}
-.lm-track:hover{animation-play-state:paused}
+.logo-marquee{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:30px 0;touch-action:pan-y;cursor:grab}
+.logo-marquee.dragging{cursor:grabbing}
+.lm-track{display:inline-flex;gap:30px;white-space:nowrap;align-items:center;padding-right:30px;will-change:transform}
+
 .lm-item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 40px;display:inline-flex;align-items:center;justify-content:center;height:112px;min-width:210px;transition:transform .3s,box-shadow .3s}
 .lm-item:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .lm-item img{height:66px;width:auto;max-width:200px;object-fit:contain}
@@ -589,7 +590,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
   </div>
 </aside>
 <button class="fab" id="fabBtn" onclick="openIq()">🧺 Inquiry <span class="cnt" id="fabCnt">0</span></button>
-<a class="wa-float" href="https://wa.me/9231926873?text=Assalam-o-Alaikum%21%20I%20have%20a%20question%20about%20Sigma%20Vintage%20Wear." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 2 6.5L4 29l7.7-2c1.8 1 3.9 1.6 6.1 1.6h.1c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.6 1.2 1.2-4.4-.3-.4c-1-1.6-1.6-3.5-1.6-5.5 0-5.4 4.4-9.8 9.9-9.8s9.9 4.4 9.9 9.8-4.5 9.8-9.8 9.8zm5.4-7.3c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.2-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg></a>
+<a class="wa-float" href="https://wa.me/923231926873?text=Assalam-o-Alaikum%21%20I%20have%20a%20question%20about%20Sigma%20Vintage%20Wear." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 2 6.5L4 29l7.7-2c1.8 1 3.9 1.6 6.1 1.6h.1c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.6 1.2 1.2-4.4-.3-.4c-1-1.6-1.6-3.5-1.6-5.5 0-5.4 4.4-9.8 9.9-9.8s9.9 4.4 9.9 9.8-4.5 9.8-9.8 9.8zm5.4-7.3c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.2-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg></a>
 
 <!-- Admin -->
 <div class="admin-modal" id="adminModal">
@@ -600,7 +601,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
       <div class="admin-row"><button class="btn" onclick="adminLogin()">Login</button><button class="btn btn-dark" onclick="closeAdmin()">Close</button></div>
     </div>
     <div id="adminPanel" style="display:none">
-      <label>WhatsApp number (digits only)</label><input id="admWa" placeholder="923205773262">
+      <label>WhatsApp number (digits only)</label><input id="admWa" placeholder="923231926873">
       <label>Products (JSON)</label><textarea id="admProducts" rows="10" style="font-family:monospace;font-size:12px"></textarea>
       <div class="admin-row"><button class="btn" onclick="adminSave()">Save</button><button class="btn btn-dark" onclick="closeAdmin()">Close</button></div>
     </div>
@@ -611,7 +612,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 /* ================= CONFIG ================= */
 const CONFIG = {
   businessName: "Sigma Vintage Wear",
-  whatsappNumber: "923205773262", // admin panel se change ho sakta hai
+  whatsappNumber: "923231926873", // admin panel se change ho sakta hai
   adminPassword: "nova2026"
 };
 
@@ -656,8 +657,40 @@ function fillCalcSelect(){
   const items = ["Grade A bales in stock","FOB Karachi","Ships to USA · UK · EU","T/T & L/C accepted","New stock every week"];
   const html = items.map(t=>`<span>${t}</span><span class="dot">◆</span>`).join("");
   document.getElementById("tickerTrack").innerHTML = html + html;
-  const logos = BRANDS.map(b=>`<a class="lm-item" href="brand-${b.slug}.html" title="${b.name} vintage wholesale"><img src="${b.logo}" alt="${b.name} logo" loading="lazy"></a>`).join("");
-  document.getElementById("logoTrack").innerHTML = logos + logos;
+  const logos = BRANDS.map(b=>`<a class="lm-item" href="brand-${b.slug}.html" title="${b.name} vintage wholesale"><img src="${b.logo}" alt="${b.name} logo" loading="lazy" draggable="false"></a>`).join("");
+  const logoTrack = document.getElementById("logoTrack");
+  logoTrack.innerHTML = logos + logos;
+  /* Logo marquee: auto-run + drag/swipe (either direction) */
+  (function(){
+    const mq = logoTrack.parentElement;
+    let pos = 0, dragging = false, hoverPause = false, startX = 0, startPos = 0, moved = 0, lastT = performance.now();
+    const SPEED = 36;
+    const half = () => logoTrack.scrollWidth / 2;
+    const norm = () => { const h = half(); if(!h) return; while(pos > 0) pos -= h; while(pos <= -h) pos += h; };
+    function frame(t){
+      const dt = Math.min(64, t - lastT); lastT = t;
+      if(!dragging && !hoverPause && half()){ pos -= SPEED * dt / 1000; norm(); logoTrack.style.transform = "translateX(" + pos + "px)"; }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+    mq.addEventListener("mouseenter", () => hoverPause = true);
+    mq.addEventListener("mouseleave", () => hoverPause = false);
+    mq.addEventListener("pointerdown", e => {
+      dragging = true; moved = 0; startX = e.clientX; startPos = pos;
+      mq.classList.add("dragging");
+      try{ mq.setPointerCapture(e.pointerId); }catch(_){}
+    });
+    mq.addEventListener("pointermove", e => {
+      if(!dragging) return;
+      const dx = e.clientX - startX; moved = Math.max(moved, Math.abs(dx));
+      pos = startPos + dx; norm();
+      logoTrack.style.transform = "translateX(" + pos + "px)";
+    });
+    const endDrag = () => { dragging = false; mq.classList.remove("dragging"); };
+    mq.addEventListener("pointerup", endDrag);
+    mq.addEventListener("pointercancel", endDrag);
+    mq.addEventListener("click", e => { if(moved > 8){ e.preventDefault(); e.stopPropagation(); } }, true);
+  })();
 })();
 
 /* ================= BRAND GRID + FOOTER ================= */
