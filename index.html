@@ -52,7 +52,7 @@ section{scroll-margin-top:90px}
 
 /* ---------- Header ---------- */
 .site-header{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.header-inner{max-width:1280px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{text-decoration:none;display:flex;align-items:center;gap:12px}
 .brand-mark{width:40px;height:40px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Anton';font-size:20px;border-radius:8px}
 .brand-name{font-family:'Anton';font-size:19px;letter-spacing:.04em;line-height:1}
@@ -81,7 +81,7 @@ section{scroll-margin-top:90px}
 .hero-bg{position:absolute;inset:0}
 .hero-bg img{width:100%;height:112%;object-fit:cover;opacity:.62;will-change:transform}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,15,10,.88) 0%,rgba(20,15,10,.25) 55%,rgba(20,15,10,.35) 100%)}
-.hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:120px 22px 70px;width:100%}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 22px 70px;width:100%}
 .hero-kicker{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;overflow:hidden}
 .hero-kicker span{display:inline-block;animation:riseUp .9s cubic-bezier(.2,.7,.2,1) both}
 .hero h1{color:#fff;font-size:clamp(56px,11vw,150px);margin-bottom:14px}
@@ -322,6 +322,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
     </a>
     <nav class="nav" aria-label="Main">
       <a class="nl" href="#bales">Bales</a>
+      <a class="nl" href="retail.html">Retail</a>
       <a class="nl" href="#grades">Grades</a>
       <a class="nl" href="#process">Process</a>
       <a class="nl" href="#calculator">Calculator</a>
@@ -339,6 +340,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
   <button class="drawer-close" onclick="closeDrawer()">×</button>
   <nav>
     <a href="#bales" onclick="closeDrawer()">Bales</a>
+    <a href="retail.html" onclick="closeDrawer()">Retail</a>
     <a href="#grades" onclick="closeDrawer()">Grades</a>
     <a href="#process" onclick="closeDrawer()">Process</a>
     <a href="#calculator" onclick="closeDrawer()">Calculator</a>
@@ -404,6 +406,18 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
       <p class="sec-sub rv">Every brand gets its own page — categories, sizes, grades and live bale listings. Pick your label.</p>
     </div>
     <div class="brand-grid" id="brandGrid"></div>
+  </div>
+</section>
+
+<!-- Retail band -->
+<section class="sec" style="background:var(--ink);color:#fff;padding:80px 0">
+  <div class="wrap" style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:space-between">
+    <div class="rv" style="flex:1;min-width:280px">
+      <div class="kicker" style="color:var(--gold)">Retail shop</div>
+      <h2 class="display" style="font-size:clamp(34px,4.5vw,58px);margin-bottom:10px">Don't need a full bale?</h2>
+      <p style="color:rgba(255,255,255,.75);max-width:520px">Shop hand-picked single pieces — every item graded, photographed and priced per piece.</p>
+    </div>
+    <a class="btn rv" href="retail.html">Shop Retail →</a>
   </div>
 </section>
 
@@ -549,7 +563,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
         <span class="brand-name" style="color:#fff">SIGMA<small>VINTAGE WEAR</small></span>
         <p>Graded vintage clothing wholesale from Karachi to the world. Honest grades, public prices.</p>
       </div>
-      <div><h4>Shop</h4><a href="#bales">All bales</a><a href="#brands">Shop by brand</a><a href="#grades">Grade guide</a><a href="#calculator">Profit calculator</a></div>
+      <div><h4>Shop</h4><a href="#bales">All bales</a><a href="retail.html">Retail shop</a><a href="#brands">Shop by brand</a><a href="#grades">Grade guide</a><a href="#calculator">Profit calculator</a></div>
       <div><h4>Brands</h4><span id="footBrands"></span></div>
       <div><h4>Company</h4><a href="#process">Our process</a><a href="#payments">Payment terms</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
     </div>

@@ -34,7 +34,7 @@ section{scroll-margin-top:90px}
 
 /* ---------- Header ---------- */
 .site-header{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.header-inner{max-width:1280px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{text-decoration:none;display:flex;align-items:center;gap:12px}
 .brand-mark{width:40px;height:40px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Anton';font-size:20px;border-radius:8px}
 .brand-name{font-family:'Anton';font-size:19px;letter-spacing:.04em;line-height:1}
@@ -63,7 +63,7 @@ section{scroll-margin-top:90px}
 .hero-bg{position:absolute;inset:0}
 .hero-bg img{width:100%;height:112%;object-fit:cover;opacity:.62;will-change:transform}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,15,10,.88) 0%,rgba(20,15,10,.25) 55%,rgba(20,15,10,.35) 100%)}
-.hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:120px 22px 70px;width:100%}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 22px 70px;width:100%}
 .hero-kicker{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;overflow:hidden}
 .hero-kicker span{display:inline-block;animation:riseUp .9s cubic-bezier(.2,.7,.2,1) both}
 .hero h1{color:#fff;font-size:clamp(56px,11vw,150px);margin-bottom:14px}
@@ -293,12 +293,12 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Champion vintage in stock</span><span class="dot">◆</span><span>FOB Karachi</span><span class="dot">◆</span><span>Ships to USA · UK · EU</span><span class="dot">◆</span><span>Champion vintage in stock</span><span class="dot">◆</span><span>FOB Karachi</span><span class="dot">◆</span><span>Ships to USA · UK · EU</span><span class="dot">◆</span></div></div>
 <header class="site-header"><div class="header-inner">
 <a class="brand" href="index.html"><span class="brand-mark">SV</span><span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span></a>
-<nav class="nav"><a class="nl" href="index.html#bales">Bales</a><a class="nl" href="index.html#brands">Brands</a><a class="nl" href="index.html#grades">Grades</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
+<nav class="nav"><a class="nl" href="index.html#bales">Bales</a><a class="nl" href="retail.html">Retail</a><a class="nl" href="index.html#brands">Brands</a><a class="nl" href="index.html#grades">Grades</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
 <div style="display:flex;gap:10px;align-items:center"><button class="btn" onclick="openIq()" style="padding:11px 24px">Get a Quote</button><button class="burger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('drawerOv').classList.add('open')">☰</button></div>
 </div></header>
 <div class="drawer-overlay" id="drawerOv" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
 <aside class="drawer" id="drawer"><button class="drawer-close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('drawerOv').classList.remove('open')">×</button>
-<nav><a href="index.html">Home</a><a href="index.html#bales">Bales</a><a href="index.html#brands">Brands</a><a href="index.html#contact">Contact</a></nav></aside>
+<nav><a href="index.html">Home</a><a href="index.html#bales">Bales</a><a href="retail.html">Retail</a><a href="index.html#brands">Brands</a><a href="index.html#contact">Contact</a></nav></aside>
 
 <section class="bp-hero"><div class="wrap bp-hero-inner">
 <div class="blogo-wrap"><img src="images/logos/champion.png" alt="Champion logo"></div>
@@ -348,6 +348,13 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
     </article></div>
 </div></section>
 
+<section class="sec" style="background:var(--ink);color:#fff;padding:70px 0"><div class="wrap" style="display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:space-between">
+<div style="flex:1;min-width:260px"><div class="kicker" style="color:var(--gold)">Retail</div>
+<h2 class="display" style="font-size:clamp(28px,3.5vw,44px);margin-bottom:8px">Want single Champion pieces?</h2>
+<p style="color:rgba(255,255,255,.75)">Hand-picked Champion items, priced per piece.</p></div>
+<a class="btn" href="retail.html#champion">Shop Champion retail →</a>
+</div></section>
+
 <section class="sec"><div class="wrap">
 <div class="size-note rv"><b>Size guide:</b> vintage bundles come in assorted sizes (mostly S–XL, some M–XXL for workwear). Need a specific size run? Message us on WhatsApp before ordering and we will pull it.</div>
 <div class="sec-head" style="margin-top:50px"><div class="kicker rv">Keep exploring</div><h2 class="sec-title display rv" style="font-size:clamp(30px,4vw,48px)">Also shop</h2>
@@ -358,7 +365,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <footer><div class="wrap">
 <div class="foot-grid"><div class="foot-brand"><span class="brand-name" style="color:#fff">SIGMA<small>VINTAGE WEAR</small></span>
 <p>Graded vintage clothing wholesale from Karachi to the world.</p></div>
-<div><h4>Shop</h4><a href="index.html#bales">All bales</a><a href="index.html#brands">Shop by brand</a><a href="index.html#calculator">Profit calculator</a></div>
+<div><h4>Shop</h4><a href="index.html#bales">All bales</a><a href="retail.html">Retail shop</a><a href="index.html#brands">Shop by brand</a><a href="index.html#calculator">Profit calculator</a></div>
 <div><h4>Brands</h4><a href="brand-nike.html">Nike vintage</a><a href="brand-adidas.html">Adidas vintage</a><a href="brand-levis.html">Levi's vintage</a><a href="brand-carhartt.html">Carhartt vintage</a><a href="brand-tommy.html">Tommy Hilfiger vintage</a><a href="brand-champion.html">Champion vintage</a></div>
 <div><h4>Company</h4><a href="index.html#process">Our process</a><a href="index.html#payments">Payment terms</a><a href="index.html#contact">Contact</a></div></div>
 <div class="foot-bottom"><span>© 2026 Sigma Vintage Wear · Karachi, Pakistan</span><span>All prices USD, FOB Karachi</span></div>
