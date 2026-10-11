@@ -283,11 +283,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .cat-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:10px}
 .cat-tile{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;transition:.3s}
 .cat-tile:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.cat-tile img{height:170px;width:100%;object-fit:cover}.chip img{height:32px;width:auto;max-width:130px;object-fit:contain;display:block}
-.chip[data-b="Adidas"] img{height:38px}
-.chip[data-b="Carhartt"] img{height:46px}
-.chip[data-b="Tommy Hilfiger"] img{height:38px}
-.chip[data-b="Champion"] img{height:24px}
+.cat-tile img{height:170px;width:100%;object-fit:cover}
 .cat-tile div{padding:16px 18px}
 .cat-tile h4{font-size:16px;font-weight:700}
 .cat-tile span{font-size:13px;color:var(--rust);font-weight:600}
@@ -301,13 +297,14 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .retail-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(193,80,46,.28),transparent 60%)}
 .retail-hero h1{font-size:clamp(46px,7vw,92px);margin-bottom:12px;position:relative;z-index:2;color:#fff;text-shadow:0 2px 26px rgba(0,0,0,.5)}
 .retail-hero p{color:rgba(255,255,255,.78);max-width:600px;position:relative;z-index:2;font-size:17px}
-.fbar{position:sticky;top:67px;z-index:50;background:rgba(244,239,230,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 0}
-.fbar-inner{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px;justify-content:safe center}
-.fbar-inner::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;background:#fff;border:1px solid var(--ink);color:var(--ink);border-radius:999px;padding:8px 22px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Inter';transition:.25s;display:flex;align-items:center;justify-content:center;min-width:64px;min-height:64px}
-.chip img{max-height:32px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block}
-.chip.active{border-color:var(--rust);box-shadow:0 0 0 2px var(--rust);background:#fff;color:var(--ink)}
-.chip:hover{border-color:var(--ink)}
+.logo-marquee{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:30px 0;touch-action:pan-y;cursor:grab}
+.logo-marquee.dragging{cursor:grabbing}
+.lm-track{display:inline-flex;gap:30px;white-space:nowrap;align-items:center;padding-right:30px;will-change:transform}
+.lm-item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 40px;display:inline-flex;align-items:center;justify-content:center;height:112px;min-width:210px;transition:transform .3s,box-shadow .3s;font-family:'Inter';font-size:16px;color:var(--ink);cursor:pointer}
+.lm-item:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.lm-item img{height:66px;width:auto;max-width:200px;object-fit:contain;pointer-events:none}
+.lm-item.active{border-color:var(--rust);box-shadow:0 0 0 2px var(--rust)}
+.lm-all span{font-weight:700;letter-spacing:2px;text-transform:uppercase}
 .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 @media(max-width:900px){.rgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.rgrid{grid-template-columns:1fr}}
@@ -334,13 +331,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <p>Single pieces, not bales. Every item is hand-selected, graded and photographed — what you see is exactly what ships.</p>
 </div></section>
 
-<div class="fbar"><div class="wrap"><div class="fbar-inner" id="brandChips"><button class="chip" data-b="All">All</button>
-<button class="chip" data-b="Nike"><img src="images/logos/nike.png" alt="Nike"></button>
-<button class="chip" data-b="Adidas"><img src="images/logos/adidas.png" alt="Adidas"></button>
-<button class="chip" data-b="Levi's"><img src="images/logos/levis.png" alt="Levi's"></button>
-<button class="chip" data-b="Carhartt"><img src="images/logos/carhartt.png" alt="Carhartt"></button>
-<button class="chip" data-b="Tommy Hilfiger"><img src="images/logos/tommy.png" alt="Tommy Hilfiger"></button>
-<button class="chip" data-b="Champion"><img src="images/logos/champion.png" alt="Champion"></button></div></div></div>
+<div class="logo-marquee" aria-label="Filter by brand"><div class="lm-track" id="retailLogoTrack"></div></div>
 
 <section class="sec"><div class="wrap">
 <div class="sec-head"><div class="kicker">Single pieces</div><h2 class="sec-title display">Shop the drop</h2>
@@ -404,11 +395,29 @@ function render(){
   <div class="pcard-spec">${p.cond}</div>
   <div class="pcard-foot"><div class="price">$${p.price}<small> / piece</small></div>
   <button class="add-btn" onclick="addCart('${p.id}')">Add +</button></div></div></article>`).join("");
-  document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c.dataset.b===brand));
+  document.querySelectorAll(".lm-item").forEach(c=>c.classList.toggle("active",c.dataset.b===brand));
 }
-document.getElementById("brandChips").addEventListener("click",e=>{
-  const c=e.target.closest(".chip"); const b=c&&c.dataset.b; if(b){brand=b;render();}
-});
+/* Brand logo marquee — same auto-run + drag as homepage; click filters */
+const RB=[{b:"All",t:1},{b:"Nike",logo:"images/logos/nike.png"},{b:"Adidas",logo:"images/logos/adidas.png"},{b:"Levi's",logo:"images/logos/levis.png"},{b:"Carhartt",logo:"images/logos/carhartt.png"},{b:"Tommy Hilfiger",logo:"images/logos/tommy.png"},{b:"Champion",logo:"images/logos/champion.png"}];
+const rTrack=document.getElementById("retailLogoTrack");
+const rLogos=RB.map(x=>x.t?`<button class="lm-item lm-all" data-b="All"><span>All</span></button>`:`<button class="lm-item" data-b="${x.b}" title="Show ${x.b}"><img src="${x.logo}" alt="${x.b}" loading="lazy" draggable="false"></button>`).join("");
+rTrack.innerHTML=rLogos+rLogos;
+(function(){
+  const mq=rTrack.parentElement;
+  let pos=0,dragging=false,hoverPause=false,startX=0,startPos=0,moved=0,lastT=performance.now();
+  const SPEED=36,half=()=>rTrack.scrollWidth/2;
+  const norm=()=>{const h=half();if(!h)return;while(pos>0)pos-=h;while(pos<=-half)pos+=h;};
+  function frame(t){const dt=Math.min(64,t-lastT);lastT=t;if(!dragging&&!hoverPause&&half()){pos-=SPEED*dt/1000;norm();rTrack.style.transform="translateX("+pos+"px)";}requestAnimationFrame(frame);}
+  requestAnimationFrame(frame);
+  mq.addEventListener("mouseenter",()=>hoverPause=true);
+  mq.addEventListener("mouseleave",()=>hoverPause=false);
+  mq.addEventListener("pointerdown",e=>{dragging=true;moved=0;startX=e.clientX;startPos=pos;mq.classList.add("dragging");try{mq.setPointerCapture(e.pointerId);}catch(_){}});
+  mq.addEventListener("pointermove",e=>{if(!dragging)return;const dx=e.clientX-startX;moved=Math.max(moved,Math.abs(dx));pos=startPos+dx;norm();rTrack.style.transform="translateX("+pos+"px)";});
+  const endDrag=()=>{dragging=false;mq.classList.remove("dragging");};
+  mq.addEventListener("pointerup",endDrag);
+  mq.addEventListener("pointercancel",endDrag);
+  mq.addEventListener("click",e=>{const c=e.target.closest(".lm-item");if(moved>8){e.preventDefault();e.stopPropagation();return;}const b=c&&c.dataset.b;if(b){brand=b;render();}},true);
+})();
 function addCart(id){cart[id]=(cart[id]||0)+1;renderCart();openCart();}
 function chQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];renderCart();}
 function renderCart(){
