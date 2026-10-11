@@ -293,15 +293,15 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 
 /* retail extras */
 .retail-hero{background:var(--ink) url('images/retail/hero-rack.jpg') center/cover;position:relative;padding:110px 0 90px;overflow:hidden}
-.retail-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(20,16,12,.88),rgba(20,16,12,.45))}
+.retail-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(20,16,12,.9),rgba(20,16,12,.62))}
 .retail-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(193,80,46,.28),transparent 60%)}
-.retail-hero h1{font-size:clamp(46px,7vw,92px);margin-bottom:12px;position:relative;z-index:2}
+.retail-hero h1{font-size:clamp(46px,7vw,92px);margin-bottom:12px;position:relative;z-index:2;color:#fff;text-shadow:0 2px 26px rgba(0,0,0,.5)}
 .retail-hero p{color:rgba(255,255,255,.78);max-width:600px;position:relative;z-index:2;font-size:17px}
 .fbar{position:sticky;top:67px;z-index:50;background:rgba(244,239,230,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 0}
 .fbar-inner{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px}
 .fbar-inner::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;background:#fff;border:1px solid var(--ink);color:var(--ink);border-radius:999px;padding:9px 20px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Inter';transition:.25s;display:flex;align-items:center;justify-content:center;min-width:64px;min-height:44px}
-.chip img{height:24px;width:auto;max-width:96px;object-fit:contain;display:block}
+.chip{flex:0 0 auto;background:#fff;border:1px solid var(--ink);color:var(--ink);border-radius:999px;padding:8px 22px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Inter';transition:.25s;display:flex;align-items:center;justify-content:center;min-width:64px;min-height:52px}
+.chip img{max-height:32px;max-width:110px;width:auto;height:auto;object-fit:contain;display:block}
 .chip.active{border-color:var(--rust);box-shadow:0 0 0 2px var(--rust);background:#fff;color:var(--ink)}
 .chip:hover{border-color:var(--ink)}
 .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -365,7 +365,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <button class="btn" style="width:100%" onclick="checkout()">Checkout on WhatsApp</button></div></aside>
 
 <script>
-const WA="923205773262";
+const WA="923231926873";
 const BRANDMAP={nike:"Nike",adidas:"Adidas",levis:"Levi's",carhartt:"Carhartt",tommy:"Tommy Hilfiger",champion:"Champion"};
 const JSON_BRANDS={"nike":1,"adidas":1,"levis":1,"carhartt":1,"tommy":1,"champion":1};
 const FALLBACK_PRODUCTS=[
@@ -434,6 +434,6 @@ render();renderCart();
 function applyHash(){const h=location.hash.replace("#","");if(h&&JSON_BRANDS){brand=BRANDMAP[h]||'All';render();}}
 applyHash();window.addEventListener("hashchange",applyHash);
 </script>
-<a class="wa-float" href="https://wa.me/9231926873?text=Assalam-o-Alaikum%21%20I%20have%20a%20question%20about%20Sigma%20Vintage%20Wear." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 2 6.5L4 29l7.7-2c1.8 1 3.9 1.6 6.1 1.6h.1c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.6 1.2 1.2-4.4-.3-.4c-1-1.6-1.6-3.5-1.6-5.5 0-5.4 4.4-9.8 9.9-9.8s9.9 4.4 9.9 9.8-4.5 9.8-9.8 9.8zm5.4-7.3c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.2-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg></a>
+<a class="wa-float" href="https://wa.me/923231926873?text=Assalam-o-Alaikum%21%20I%20have%20a%20question%20about%20Sigma%20Vintage%20Wear." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 2 6.5L4 29l7.7-2c1.8 1 3.9 1.6 6.1 1.6h.1c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.6 1.2 1.2-4.4-.3-.4c-1-1.6-1.6-3.5-1.6-5.5 0-5.4 4.4-9.8 9.9-9.8s9.9 4.4 9.9 9.8-4.5 9.8-9.8 9.8zm5.4-7.3c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.2-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg></a>
 </body>
 </html>
