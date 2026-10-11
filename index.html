@@ -267,11 +267,12 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .admin-box input,.admin-box textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:14px;font-family:'Inter'}
 .admin-row{display:flex;gap:10px;margin-top:22px}
 /* ---------- Logo marquee ---------- */
-.logo-marquee{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:26px 0}
-.lm-track{display:inline-flex;gap:26px;white-space:nowrap;animation:tick 36s linear infinite;align-items:center;padding-right:26px}
-.lm-item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 28px;display:inline-flex;align-items:center;height:76px;transition:transform .3s,box-shadow .3s}
+.logo-marquee{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:30px 0}
+.lm-track{display:inline-flex;gap:30px;white-space:nowrap;animation:tick 40s linear infinite;align-items:center;padding-right:30px}
+.lm-track:hover{animation-play-state:paused}
+.lm-item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 40px;display:inline-flex;align-items:center;justify-content:center;height:112px;min-width:210px;transition:transform .3s,box-shadow .3s}
 .lm-item:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.lm-item img{height:46px;width:auto;max-width:160px;object-fit:contain}
+.lm-item img{height:66px;width:auto;max-width:200px;object-fit:contain}
 
 /* ---------- Brands grid ---------- */
 .brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
