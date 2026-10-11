@@ -574,21 +574,5 @@
   "cond": "",
   "img": "images/images/media-generation-sorting-hands-0-4c39a63a-a739-4402-8077-88d7312dcb73.jpg",
   "desc": "Fleece joggers. Sizes S–XL assorted."
- },
- {
-  "id": "p-mv460p31",
-  "type": "retail",
-  "name": "TEST PRODUCT DELETE ME",
-  "brand": "Nike",
-  "cat": "Test",
-  "subcat": "",
-  "sizes": "M",
-  "price": 1,
-  "grade": "A",
-  "wt": "",
-  "pcs": 0,
-  "cond": "",
-  "img": "",
-  "desc": "end to end test"
  }
 ]
