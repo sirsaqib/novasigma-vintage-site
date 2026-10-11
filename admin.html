@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin — Sigma Vintage Wear</title>
 <meta name="robots" content="noindex,nofollow">
@@ -68,7 +70,7 @@ img.preview{max-width:180px;border-radius:10px;margin-top:8px;display:block}
 <!-- APP -->
 <div id="app" class="hidden">
 <header><div class="wrap">
-<h1>SIGMA <span style="color:var(--rust)">ADMIN</span></h1>
+<h1 style="display:flex;align-items:center;gap:12px"><img src="images/logo.png" alt="Sigma" style="width:40px;height:40px;background:#fff;border-radius:8px;padding:2px">SIGMA <span style="color:var(--rust)">ADMIN</span></h1>
 <button class="btn ghost small" style="color:#fff;border-color:#fff" onclick="location.reload()">Logout</button>
 </div></header>
 <div class="wrap">
@@ -231,7 +233,7 @@ function openProductForm(id){
 function toggleWs(){$("wsFields").style.display=$("f_type").value==="wholesale"?"grid":"none";}
 $("f_type")&&$("f_type").addEventListener("change",toggleWs);
 function closeProductForm(){$("pformCard").classList.add("hidden");}
-function delProduct(id){ if(confirm("Delete this product?")){DB.products=DB.products.filter(p=>p.id!==id);renderProducts();setStatus("Deleted (publish karna na bhoolein).");} }
+async function delProduct(id){ if(await askConfirm("Delete this product?")){DB.products=DB.products.filter(p=>p.id!==id);renderProducts();setStatus("Deleted (publish karna na bhoolein).");} }
 function saveProduct(){
   const name=$("f_name").value.trim(), price=parseFloat($("f_price").value);
   if(!name||!price){alert("Name aur price zaroori hai.");return;}
@@ -266,7 +268,7 @@ function renderCats(){
     <button class="btn danger small" onclick="delCatGroup(${gi})">Delete group</button></div></div>`).join("");
 }
 function addCatGroup(){const b=prompt("Brand/group name:");if(b){DB.cats.push({brand:b,slug:slugify(b),categories:[]});renderCats();}}
-function delCatGroup(gi){if(confirm("Delete this group and its categories?")){DB.cats.splice(gi,1);renderCats();}}
+async function delCatGroup(gi){if(await askConfirm("Delete this group and its categories?")){DB.cats.splice(gi,1);renderCats();}}
 function addCat(gi){
   const n=prompt("Category name:"); if(!n)return;
   const subs=prompt("Sub-categories (comma se alag karein, ya khaali):")||"";
@@ -279,7 +281,7 @@ function editCat(gi,ci){
   const subs=prompt("Sub-categories (comma separated):",(c.subcategories||[]).join(", "));
   c.name=n; c.subcategories=(subs||"").split(",").map(s=>s.trim()).filter(Boolean); renderCats();
 }
-function delCat(gi,ci){if(confirm("Delete category?")){DB.cats[gi].categories.splice(ci,1);renderCats();}}
+async function delCat(gi,ci){if(await askConfirm("Delete category?")){DB.cats[gi].categories.splice(ci,1);renderCats();}}
 
 /* ---------- blog ---------- */
 function renderPosts(){
@@ -300,7 +302,7 @@ function openPostForm(slug){
   $("bformCard").classList.remove("hidden"); $("bformCard").scrollIntoView({behavior:"smooth"});
 }
 function closePostForm(){$("bformCard").classList.add("hidden");}
-function delPost(slug){if(confirm("Delete this post?")){DB.posts=DB.posts.filter(p=>p.slug!==slug);renderPosts();}}
+async function delPost(slug){if(await askConfirm("Delete this post?")){DB.posts=DB.posts.filter(p=>p.slug!==slug);renderPosts();}}
 function renderBlocks(){
   const labels={heading:"Heading",paragraph:"Paragraph",image:"Image",quote:"Quote"};
   $("blocks").innerHTML=editingBlocks.map((b,i)=>`<div class="block"><div class="block-head">
@@ -364,6 +366,19 @@ async function publish(){
   }catch(e){ setStatus("Network error: "+e.message); }
   btn.disabled=false;
 }
+</script>
+
+<div class="modal-ov" id="cfOv"><div class="modal">
+<p id="cfMsg" style="font-weight:600;margin-bottom:18px">Delete?</p>
+<div style="display:flex;gap:10px;justify-content:flex-end">
+<button class="btn ghost small" onclick="cfResolve(false)">Cancel</button>
+<button class="btn small" style="background:#b3261e" onclick="cfResolve(true)">Delete</button>
+</div></div></div>
+<style>.modal-ov{position:fixed;inset:0;background:rgba(20,16,10,.5);display:none;place-items:center;z-index:200}.modal-ov.open{display:grid}.modal{background:#fff;border-radius:14px;padding:26px;max-width:340px;width:calc(100% - 44px);box-shadow:0 20px 60px rgba(0,0,0,.25)}</style>
+<script>
+let _cf=null;
+function askConfirm(msg){document.getElementById("cfMsg").textContent=msg;document.getElementById("cfOv").classList.add("open");return new Promise(r=>{_cf=r;});}
+function cfResolve(v){document.getElementById("cfOv").classList.remove("open");if(_cf){_cf(v);_cf=null;}}
 </script>
 </body>
 </html>
