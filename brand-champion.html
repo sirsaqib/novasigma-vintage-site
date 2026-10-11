@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Champion Vintage Wholesale | Bulk Champion Bales & Bundles — Nova Sigma Vintage Wear</title>
+<title>Champion Vintage Wholesale | Bulk Champion Bales & Bundles — Sigma Vintage Wear</title>
 <meta name="description" content="Buy Champion vintage clothing wholesale — graded bundles of Champion tees, hoodies, jackets & more. FOB Karachi, ships to USA, UK & EU.">
 <link rel="canonical" href="https://novasigmavintagewear.com/brand-champion.html">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where can I buy Champion vintage clothing wholesale?","acceptedAnswer":{"@type":"Answer","text":"Nova Sigma Vintage Wear supplies Champion vintage bundles in bulk from Karachi, shipping FOB worldwide to the USA, UK and EU."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where can I buy Champion vintage clothing wholesale?","acceptedAnswer":{"@type":"Answer","text":"Sigma Vintage Wear supplies Champion vintage bundles in bulk from Karachi, shipping FOB worldwide to the USA, UK and EU."}}]}</script>
 <style>
 :root{
   --cream:#f4efe6; --sand:#e9dfcd; --ink:#1a1512; --ink2:#2b241d;
@@ -56,6 +56,7 @@ section{scroll-margin-top:90px}
 .drawer nav{display:flex;flex-direction:column;gap:6px;margin:24px 0}
 .drawer nav a{color:var(--cream);text-decoration:none;font-size:17px;font-weight:600;padding:12px 4px;border-bottom:1px solid rgba(244,239,230,.14);text-transform:uppercase;letter-spacing:1px}
 @media(max-width:900px){.nav{display:none}.burger{display:block}}
+@media(max-width:720px){.scroll-hint{display:none}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
@@ -110,9 +111,10 @@ section{scroll-margin-top:90px}
 
 /* ---------- Products ---------- */
 .prod-sec{background:var(--cream)}
-.prod-scroll{display:flex;gap:22px;overflow-x:auto;padding:6px 4px 26px;scroll-snap-type:x mandatory;scrollbar-width:none}
-.prod-scroll::-webkit-scrollbar{display:none}
-.pcard{flex:0 0 330px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .35s,box-shadow .35s;position:relative}
+.prod-scroll{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:6px 4px 10px}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .35s,box-shadow .35s;position:relative}
+@media(max-width:900px){.prod-scroll{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.prod-scroll{grid-template-columns:1fr}}
 .pcard:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
 .pcard-img{position:relative;height:250px;overflow:hidden;background:var(--sand)}
 .pcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
@@ -246,7 +248,6 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .admin-box label{display:block;font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin:14px 0 6px;color:var(--rust)}
 .admin-box input,.admin-box textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:14px;font-family:'Inter'}
 .admin-row{display:flex;gap:10px;margin-top:22px}
-.admin-link{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:64;font-size:11px;color:#a09a8d;background:rgba(244,239,230,.8);padding:5px 14px;border-radius:999px;cursor:pointer;border:1px solid var(--line)}
 /* ---------- Logo marquee ---------- */
 .logo-marquee{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:26px 0}
 .lm-track{display:inline-flex;gap:26px;white-space:nowrap;animation:tick 36s linear infinite;align-items:center;padding-right:26px}
@@ -291,7 +292,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <body>
 <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Champion vintage in stock</span><span class="dot">◆</span><span>FOB Karachi</span><span class="dot">◆</span><span>Ships to USA · UK · EU</span><span class="dot">◆</span><span>Champion vintage in stock</span><span class="dot">◆</span><span>FOB Karachi</span><span class="dot">◆</span><span>Ships to USA · UK · EU</span><span class="dot">◆</span></div></div>
 <header class="site-header"><div class="header-inner">
-<a class="brand" href="index.html"><span class="brand-mark">NS</span><span class="brand-name">NOVA SIGMA<small>VINTAGE WEAR</small></span></a>
+<a class="brand" href="index.html"><span class="brand-mark">SV</span><span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span></a>
 <nav class="nav"><a class="nl" href="index.html#bales">Bales</a><a class="nl" href="index.html#brands">Brands</a><a class="nl" href="index.html#grades">Grades</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
 <div style="display:flex;gap:10px;align-items:center"><button class="btn" onclick="openIq()" style="padding:11px 24px">Get a Quote</button><button class="burger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('drawerOv').classList.add('open')">☰</button></div>
 </div></header>
@@ -355,12 +356,12 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 </div></section>
 
 <footer><div class="wrap">
-<div class="foot-grid"><div class="foot-brand"><span class="brand-name" style="color:#fff">NOVA SIGMA<small>VINTAGE WEAR</small></span>
+<div class="foot-grid"><div class="foot-brand"><span class="brand-name" style="color:#fff">SIGMA<small>VINTAGE WEAR</small></span>
 <p>Graded vintage clothing wholesale from Karachi to the world.</p></div>
 <div><h4>Shop</h4><a href="index.html#bales">All bales</a><a href="index.html#brands">Shop by brand</a><a href="index.html#calculator">Profit calculator</a></div>
 <div><h4>Brands</h4><a href="brand-nike.html">Nike vintage</a><a href="brand-adidas.html">Adidas vintage</a><a href="brand-levis.html">Levi's vintage</a><a href="brand-carhartt.html">Carhartt vintage</a><a href="brand-tommy.html">Tommy Hilfiger vintage</a><a href="brand-champion.html">Champion vintage</a></div>
 <div><h4>Company</h4><a href="index.html#process">Our process</a><a href="index.html#payments">Payment terms</a><a href="index.html#contact">Contact</a></div></div>
-<div class="foot-bottom"><span>© 2026 Nova Sigma Vintage Wear · Karachi, Pakistan</span><span>All prices USD, FOB Karachi</span></div>
+<div class="foot-bottom"><span>© 2026 Sigma Vintage Wear · Karachi, Pakistan</span><span>All prices USD, FOB Karachi</span></div>
 </div></footer>
 
 <div class="iq-overlay" id="iqOv" onclick="closeIq()"></div>
