@@ -415,13 +415,7 @@ function checkout(){
   const ids=Object.keys(cart); if(!ids.length)return alert("Cart is empty.");
   const lines=ids.map((id,i)=>{const p=PRODUCTS.find(x=>x.id===id);return `${i+1}. ${p.name} (${p.size}) x${cart[id]} — $${p.price*cart[id]}`;});
   const tot=ids.reduce((s,id)=>s+PRODUCTS.find(x=>x.id===id).price*cart[id],0);
-  const msg=`Assalam-o-Alaikum! I want to order (retail):
-
-${lines.join("
-")}
-
-Total: $${tot}
-Please confirm shipping to my country.`;
+  const msg=`Assalam-o-Alaikum! I want to order (retail):\n\n${lines.join("\n")}\n\nTotal: $${tot}\nPlease confirm shipping to my country.`;
   window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
 }
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target);}}),{threshold:.12});
