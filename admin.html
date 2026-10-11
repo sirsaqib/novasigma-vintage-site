@@ -236,7 +236,7 @@ function closeProductForm(){$("pformCard").classList.add("hidden");}
 async function delProduct(id){ if(await askConfirm("Delete this product?")){DB.products=DB.products.filter(p=>p.id!==id);renderProducts();setStatus("Deleted (publish karna na bhoolein).");} }
 function saveProduct(){
   const name=$("f_name").value.trim(), price=parseFloat($("f_price").value);
-  if(!name||!price){alert("Name aur price zaroori hai.");return;}
+  if(!name||!price){setStatus("Name aur price zaroori hai.");return;}
   let id=$("f_id").value || ("p-"+Date.now().toString(36));
   const img=$("f_img").value.trim();
   const rec={id, type:$("f_type").value, name, brand:$("f_brand").value, cat:$("f_cat").value.trim(),
@@ -267,18 +267,18 @@ function renderCats(){
     <div style="display:flex;gap:8px;margin-top:10px"><button class="btn ghost small" onclick="addCat(${gi})">+ Category</button>
     <button class="btn danger small" onclick="delCatGroup(${gi})">Delete group</button></div></div>`).join("");
 }
-function addCatGroup(){const b=prompt("Brand/group name:");if(b){DB.cats.push({brand:b,slug:slugify(b),categories:[]});renderCats();}}
+async function addCatGroup(){const b=await askInput("Brand/group name:");if(b){DB.cats.push({brand:b,slug:slugify(b),categories:[]});renderCats();}}
 async function delCatGroup(gi){if(await askConfirm("Delete this group and its categories?")){DB.cats.splice(gi,1);renderCats();}}
-function addCat(gi){
-  const n=prompt("Category name:"); if(!n)return;
-  const subs=prompt("Sub-categories (comma se alag karein, ya khaali):")||"";
+async function addCat(gi){
+  const n=await askInput("Category name:"); if(!n)return;
+  const subs=await askInput("Sub-categories (comma se alag karein, ya khaali):")||"";
   DB.cats[gi].categories.push({name:n,price_hint:"",subcategories:subs.split(",").map(s=>s.trim()).filter(Boolean)});
   renderCats();
 }
-function editCat(gi,ci){
+async function editCat(gi,ci){
   const c=DB.cats[gi].categories[ci];
-  const n=prompt("Category name:",c.name); if(n===null)return;
-  const subs=prompt("Sub-categories (comma separated):",(c.subcategories||[]).join(", "));
+  const n=await askInput("Category name:",c.name); if(n===null)return;
+  const subs=await askInput("Sub-categories (comma separated):",(c.subcategories||[]).join(", "));
   c.name=n; c.subcategories=(subs||"").split(",").map(s=>s.trim()).filter(Boolean); renderCats();
 }
 async function delCat(gi,ci){if(await askConfirm("Delete category?")){DB.cats[gi].categories.splice(ci,1);renderCats();}}
@@ -323,7 +323,7 @@ function stageBlockImage(input,i){
   r.readAsDataURL(f);
 }
 function savePost(){
-  const title=$("b_title").value.trim(); if(!title){alert("Title zaroori hai.");return;}
+  const title=$("b_title").value.trim(); if(!title){setStatus("Title zaroori hai.");return;}
   const slug=$("b_slug").value.trim()||slugify(title);
   const rec={slug,title,date:$("b_date").value.trim(),excerpt:$("b_excerpt").value.trim(),
     cover:$("b_cover").value.trim(),blocks:editingBlocks.map(b=>{const c={type:b.type};if(b.type==="image"){c.url=b.url||"";if(b.caption)c.caption=b.caption;if(b._imgdata)c._imgdata=b._imgdata;}else c.text=b.text||"";return c;})};
@@ -339,7 +339,7 @@ function saveSettings(){DB.settings={whatsapp:$("s_wa").value.trim(),email:$("s_
 
 /* ---------- publish ---------- */
 async function publish(){
-  if(!PW){alert("Pehle login karein.");return;}
+  if(!PW){setStatus("Pehle login karein.");return;}
   const btn=$("pubBtn"); btn.disabled=true; setStatus("Publishing... (1-2 min lag sakta hai)");
   try{
     const files={
@@ -361,7 +361,7 @@ async function publish(){
     const r=await fetch("/api/publish",{method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({password:PW,files,message:"Admin panel publish"})});
     const j=await r.json();
-    if(j.ok){ stagedImg=null; setStatus("Published! Site 1-2 minute mein update ho jayegi."); alert("Ho gaya! Site 1-2 minute mein update ho jayegi."); }
+    if(j.ok){ stagedImg=null; setStatus("Published! Site 1-2 minute mein update ho jayegi."); }
     else setStatus("Error: "+(j.error||JSON.stringify(j.results)));
   }catch(e){ setStatus("Network error: "+e.message); }
   btn.disabled=false;
@@ -379,6 +379,19 @@ async function publish(){
 let _cf=null;
 function askConfirm(msg){document.getElementById("cfMsg").textContent=msg;document.getElementById("cfOv").classList.add("open");return new Promise(r=>{_cf=r;});}
 function cfResolve(v){document.getElementById("cfOv").classList.remove("open");if(_cf){_cf(v);_cf=null;}}
+</script>
+
+<div class="modal-ov" id="inOv"><div class="modal">
+<p id="inMsg" style="font-weight:600;margin-bottom:12px">Input</p>
+<input id="inVal" class="in" style="margin-bottom:18px">
+<div style="display:flex;gap:10px;justify-content:flex-end">
+<button class="btn ghost small" onclick="inResolve(null)">Cancel</button>
+<button class="btn small" onclick="inResolve(document.getElementById('inVal').value)">OK</button>
+</div></div></div>
+<script>
+let _in=null;
+function askInput(msg,def){document.getElementById("inMsg").textContent=msg;document.getElementById("inVal").value=def||"";document.getElementById("inOv").classList.add("open");setTimeout(()=>document.getElementById("inVal").focus(),50);return new Promise(r=>{_in=r;});}
+function inResolve(v){document.getElementById("inOv").classList.remove("open");if(_in){_in(v);_in=null;}}
 </script>
 </body>
 </html>
