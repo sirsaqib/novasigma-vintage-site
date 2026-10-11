@@ -238,7 +238,7 @@ function saveProduct(){
   const name=$("f_name").value.trim(), price=parseFloat($("f_price").value);
   if(!name||!price){setStatus("Name aur price zaroori hai.");return;}
   let id=$("f_id").value || ("p-"+Date.now().toString(36));
-  const img=$("f_img").value.trim();
+  const img=$("f_img").value.trim().replace(/^(images\/)+/,"images/");
   const rec={id, type:$("f_type").value, name, brand:$("f_brand").value, cat:$("f_cat").value.trim(),
     subcat:$("f_subcat").value.trim(), sizes:$("f_sizes").value.trim(), price,
     grade:$("f_grade").value, wt:$("f_wt").value.trim(), pcs:parseInt($("f_pcs").value)||0,
