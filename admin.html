@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Sigma Vintage Wear</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c1712;--rust:#c1502e;--cream:#f4efe6;--sand:#e9e0d2;--line:#ddd2c0;--ok:#2e7d4f}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{background:var(--ink);color:#fff;padding:16px 0;position:sticky;top:0;z-index:50}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+h1{font-family:'Anton';font-size:24px;letter-spacing:1px}
+.tabs{display:flex;gap:8px;margin:22px 0;flex-wrap:wrap}
+.tab{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 22px;font-weight:600;cursor:pointer;font-size:14px}
+.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
+.card h2{font-family:'Anton';font-size:22px;margin-bottom:14px;letter-spacing:.5px}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px;color:#5c554b}
+input[type=text],input[type=number],select,textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:14px;font-family:'Inter';background:#fffdf8}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+.btn{background:var(--rust);color:#fff;border:none;border-radius:999px;padding:12px 28px;font-weight:700;cursor:pointer;font-size:14px}
+.btn:hover{filter:brightness(1.08)}
+.btn.dark{background:var(--ink)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+.btn.small{padding:8px 16px;font-size:13px}
+.btn.danger{background:#b3372e}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;padding:10px 8px;border-bottom:2px solid var(--line);color:#5c554b;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+td img{width:52px;height:52px;object-fit:cover;border-radius:8px}
+.actions{display:flex;gap:6px}
+.hint{font-size:12.5px;color:#8a8073;margin-top:4px}
+.publishbar{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--ink);padding:14px 0;margin-top:26px}
+.publishbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#status{font-size:13.5px;font-weight:600}
+.block{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px;background:#fffdf8}
+.block-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.block-type{font-size:11px;font-weight:700;background:var(--sand);border-radius:999px;padding:4px 12px;text-transform:uppercase;letter-spacing:.5px}
+.bbtns{display:flex;gap:6px}
+.bbtns button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:12px}
+.login{max-width:420px;margin:12vh auto;text-align:center}
+.login .card{padding:36px}
+.pill{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:3px 10px;background:var(--sand)}
+.pill.retail{background:#dfe9d8}.pill.wholesale{background:#e5d9c8}
+.hidden{display:none!important}
+.toolbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.search{max-width:300px}
+img.preview{max-width:180px;border-radius:10px;margin-top:8px;display:block}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login" class="wrap"><div class="login"><div class="card">
+<h1 style="margin-bottom:6px">SIGMA <span style="color:var(--rust)">ADMIN</span></h1>
+<p class="hint" style="margin-bottom:18px">Apna admin password likhein</p>
+<input type="text" id="pw" placeholder="Password" style="margin-bottom:12px" autocomplete="off">
+<button class="btn" style="width:100%" onclick="doLogin()">Login</button>
+<p id="loginErr" class="hint" style="color:#b3372e"></p>
+</div></div></div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+<header><div class="wrap">
+<h1>SIGMA <span style="color:var(--rust)">ADMIN</span></h1>
+<button class="btn ghost small" style="color:#fff;border-color:#fff" onclick="location.reload()">Logout</button>
+</div></header>
+<div class="wrap">
+<div class="tabs">
+<button class="tab active" data-t="products">Products</button>
+<button class="tab" data-t="cats">Categories</button>
+<button class="tab" data-t="blog">Blog</button>
+<button class="tab" data-t="settings">Settings</button>
+</div>
+
+<!-- PRODUCTS -->
+<section id="t-products">
+<div class="toolbar">
+<button class="btn" onclick="openProductForm()">+ New Product</button>
+<input class="search" type="text" id="pq" placeholder="Search products..." oninput="renderProducts()">
+<select id="pqType" onchange="renderProducts()" style="max-width:170px"><option value="">All types</option><option value="wholesale">Wholesale</option><option value="retail">Retail</option></select>
+</div>
+<div class="card"><table><thead><tr><th></th><th>Name</th><th>Type</th><th>Brand</th><th>Price</th><th></th></tr></thead>
+<tbody id="prow"></tbody></table></div>
+
+<div class="card hidden" id="pformCard"><h2 id="pfTitle">New Product</h2>
+<input type="hidden" id="f_id">
+<div class="row">
+<div><label>Product name *</label><input type="text" id="f_name" placeholder="e.g. Vintage Nike Hoodie"></div>
+<div><label>Type *</label><select id="f_type"><option value="wholesale">Wholesale (bale/bundle)</option><option value="retail">Retail (single piece)</option></select></div>
+</div>
+<div class="row">
+<div><label>Brand *</label><select id="f_brand"><option>Nike</option><option>Adidas</option><option>Levi's</option><option>Carhartt</option><option>Tommy Hilfiger</option><option>Champion</option><option>Mixed</option></select></div>
+<div><label>Category</label><input type="text" id="f_cat" placeholder="e.g. Hoodies"></div>
+</div>
+<div class="row">
+<div><label>Sub-category</label><input type="text" id="f_subcat" placeholder="optional"></div>
+<div><label>Sizes</label><input type="text" id="f_sizes" placeholder="e.g. M  /  S–XL assorted"></div>
+</div>
+<div class="row">
+<div><label>Price (USD) *</label><input type="number" id="f_price" min="1" placeholder="e.g. 35"></div>
+<div><label>Condition / note</label><input type="text" id="f_cond" placeholder="retail: e.g. Excellent, no flaws"></div>
+</div>
+<div class="row" id="wsFields">
+<div><label>Grade (wholesale)</label><select id="f_grade"><option>A</option><option>A/B</option><option>B</option><option>B/C</option><option>C</option></select></div>
+<div><label>Pieces per bundle</label><input type="number" id="f_pcs" min="1" placeholder="e.g. 50"></div>
+</div>
+<div><label>Weight (wholesale, optional)</label><input type="text" id="f_wt" placeholder="e.g. 45kg"></div>
+<div><label>Description</label><textarea id="f_desc" placeholder="Short description for the product card"></textarea></div>
+<div><label>Product image</label>
+<input type="file" id="f_imgfile" accept="image/*" onchange="stageImage(this)">
+<img id="f_imgprev" class="preview hidden">
+<input type="text" id="f_img" placeholder="or paste image URL">
+<p class="hint">Apne phone/computer se photo upload karein — site par khud lag jayegi.</p></div>
+<div style="margin-top:16px;display:flex;gap:10px">
+<button class="btn" onclick="saveProduct()">Save Product</button>
+<button class="btn ghost" onclick="closeProductForm()">Cancel</button>
+</div></div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="t-cats" class="hidden">
+<div class="toolbar"><button class="btn" onclick="addCatGroup()">+ New Brand Group</button></div>
+<div id="catGroups"></div>
+</section>
+
+<!-- BLOG -->
+<section id="t-blog" class="hidden">
+<div class="toolbar"><button class="btn" onclick="openPostForm()">+ New Blog Post</button></div>
+<div class="card"><table><thead><tr><th>Title</th><th>Date</th><th></th></tr></thead><tbody id="brow"></tbody></table></div>
+<div class="card hidden" id="bformCard"><h2 id="bfTitle">New Post</h2>
+<input type="hidden" id="b_slug_old">
+<label>Title *</label><input type="text" id="b_title" placeholder="Post title" oninput="document.getElementById('b_slug').value=slugify(this.value)">
+<label>URL slug</label><input type="text" id="b_slug" placeholder="auto from title">
+<div class="row"><div><label>Date</label><input type="text" id="b_date" placeholder="2026-10-11"></div>
+<div><label>Cover image</label><input type="file" accept="image/*" onchange="stageImage(this,'b_cover')"><input type="text" id="b_cover" placeholder="or image URL" style="margin-top:6px"></div></div>
+<label>Short excerpt</label><textarea id="b_excerpt" style="min-height:60px" placeholder="2 lines shown on the blog page"></textarea>
+<h3 style="margin:18px 0 10px;font-family:'Anton'">Writing Blocks</h3>
+<div id="blocks"></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+<button class="btn ghost small" onclick="addBlock('heading')">+ Heading</button>
+<button class="btn ghost small" onclick="addBlock('paragraph')">+ Paragraph</button>
+<button class="btn ghost small" onclick="addBlock('image')">+ Image</button>
+<button class="btn ghost small" onclick="addBlock('quote')">+ Quote</button>
+</div>
+<p class="hint">Blocks ko upar/neeche kar sakte hain, delete bhi. Sab optional hai.</p>
+<div style="margin-top:16px;display:flex;gap:10px">
+<button class="btn" onclick="savePost()">Save Post</button>
+<button class="btn ghost" onclick="closePostForm()">Cancel</button>
+</div></div>
+</section>
+
+<!-- SETTINGS -->
+<section id="t-settings" class="hidden">
+<div class="card"><h2>Shop Settings</h2>
+<label>WhatsApp number (country code ke sath, bina + ke)</label><input type="text" id="s_wa">
+<label>Contact email</label><input type="text" id="s_email">
+<label>Announcement bar text (homepage top)</label><input type="text" id="s_ann">
+<div style="margin-top:16px"><button class="btn" onclick="saveSettings()">Save Settings</button></div>
+</div>
+<div class="card"><h2>Help</h2>
+<p class="hint" style="font-size:13.5px;line-height:1.8">Koi bhi change karne ke baad neeche <b>Publish Changes</b> dabana zaroori hai — tabhi site par update hoga (1-2 minute lagte hain).<br>Photo upload karne par wo khud site par chali jayegi.</p></div>
+</section>
+</div>
+
+<div class="publishbar"><div class="wrap">
+<span id="status">Ready.</span>
+<button class="btn" id="pubBtn" onclick="publish()">Publish Changes</button>
+</div></div>
+</div>
+
+<script>
+let PW="", DB={products:[],cats:[],posts:[],settings:{}}, stagedImg=null, stagedImgFor=null, editingBlocks=[];
+
+const $=id=>document.getElementById(id);
+const slugify=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,60);
+
+/* ---------- login ---------- */
+function doLogin(){ PW=$("pw").value.trim();
+  if(!PW){$("loginErr").textContent="Password likhein.";return;}
+  $("login").classList.add("hidden"); $("app").classList.remove("hidden"); loadAll();
+}
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active")); t.classList.add("active");
+  ["products","cats","blog","settings"].forEach(k=>$("t-"+k).classList.toggle("hidden",k!==t.dataset.t));
+});
+
+/* ---------- load ---------- */
+async function loadAll(){
+  setStatus("Loading data...");
+  try{
+    const [p,c,b,s]=await Promise.all(["products","categories","posts","settings"].map(k=>fetch("data/"+k+".json").then(r=>r.json())));
+    DB={products:p,cats:c,posts:b,settings:s};
+    fillSettings(); renderProducts(); renderCats(); renderPosts(); setStatus("Ready. "+p.length+" products, "+b.length+" posts loaded.");
+  }catch(e){ setStatus("Could not load data files. Pehle ek dafa publish karein."); }
+}
+function setStatus(t){$("status").textContent=t;}
+
+/* ---------- products ---------- */
+function renderProducts(){
+  const q=($("pq").value||"").toLowerCase(), ty=$("pqType").value;
+  const list=DB.products.filter(p=>(!ty||p.type===ty)&&(!q||(p.name+" "+p.brand).toLowerCase().includes(q)));
+  $("prow").innerHTML=list.map(p=>`<tr>
+    <td>${p.img?`<img src="${p.img}" loading="lazy">`:"—"}</td>
+    <td><b>${esc(p.name)}</b><br><span class="hint">${esc(p.cat||"")}${p.subcat?" · "+esc(p.subcat):""}</span></td>
+    <td><span class="pill ${p.type}">${p.type}</span></td><td>${esc(p.brand)}</td><td><b>$${p.price}</b></td>
+    <td><div class="actions"><button class="btn ghost small" onclick="openProductForm('${p.id}')">Edit</button>
+    <button class="btn danger small" onclick="delProduct('${p.id}')">Delete</button></div></td></tr>`).join("")
+    ||`<tr><td colspan="6" class="hint">Koi product nahi mila.</td></tr>`;
+}
+function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function openProductForm(id){
+  const p=id?DB.products.find(x=>x.id===id):null;
+  $("pfTitle").textContent=p?"Edit Product":"New Product";
+  $("f_id").value=p?p.id:""; $("f_name").value=p?p.name:""; $("f_type").value=p?p.type:"wholesale";
+  $("f_brand").value=p?p.brand:"Nike"; $("f_cat").value=p?p.cat:""; $("f_subcat").value=(p&&p.subcat)||"";
+  $("f_sizes").value=p?p.sizes:""; $("f_price").value=p?p.price:""; $("f_cond").value=(p&&p.cond)||"";
+  $("f_grade").value=(p&&p.grade)||"A"; $("f_pcs").value=(p&&p.pcs)||""; $("f_wt").value=(p&&p.wt)||"";
+  $("f_desc").value=(p&&p.desc)||""; $("f_img").value=(p&&p.img)||"";
+  $("f_imgprev").src=p&&p.img?p.img:""; $("f_imgprev").classList.toggle("hidden",!(p&&p.img));
+  stagedImg=null; $("f_imgfile").value="";
+  $("pformCard").classList.remove("hidden"); $("pformCard").scrollIntoView({behavior:"smooth"});
+  toggleWs();
+}
+function toggleWs(){$("wsFields").style.display=$("f_type").value==="wholesale"?"grid":"none";}
+$("f_type")&&$("f_type").addEventListener("change",toggleWs);
+function closeProductForm(){$("pformCard").classList.add("hidden");}
+function delProduct(id){ if(confirm("Delete this product?")){DB.products=DB.products.filter(p=>p.id!==id);renderProducts();setStatus("Deleted (publish karna na bhoolein).");} }
+function saveProduct(){
+  const name=$("f_name").value.trim(), price=parseFloat($("f_price").value);
+  if(!name||!price){alert("Name aur price zaroori hai.");return;}
+  let id=$("f_id").value || ("p-"+Date.now().toString(36));
+  const img=$("f_img").value.trim();
+  const rec={id, type:$("f_type").value, name, brand:$("f_brand").value, cat:$("f_cat").value.trim(),
+    subcat:$("f_subcat").value.trim(), sizes:$("f_sizes").value.trim(), price,
+    grade:$("f_grade").value, wt:$("f_wt").value.trim(), pcs:parseInt($("f_pcs").value)||0,
+    cond:$("f_cond").value.trim(), img, desc:$("f_desc").value.trim()};
+  const i=DB.products.findIndex(p=>p.id===id);
+  if(i>=0)DB.products[i]=rec; else DB.products.push(rec);
+  closeProductForm(); renderProducts(); setStatus("Saved locally — Publish dabayein.");
+}
+
+/* ---------- image staging ---------- */
+function stageImage(input,forField){
+  const f=input.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{ stagedImg={name:f.name, data:r.result.split(",")[1]}; stagedImgFor=forField||"f_img";
+    if(stagedImgFor==="f_img"){$("f_imgprev").src=r.result;$("f_imgprev").classList.remove("hidden");}
+    setStatus("Photo ready: "+f.name); };
+  r.readAsDataURL(f);
+}
+
+/* ---------- categories ---------- */
+function renderCats(){
+  $("catGroups").innerHTML=DB.cats.map((g,gi)=>`<div class="card"><h2>${esc(g.brand)}</h2>
+    ${g.categories.map((c,ci)=>`<div class="block"><div class="block-head"><b>${esc(c.name)}</b>
+      <div class="bbtns"><button onclick="editCat(${gi},${ci})">Edit</button><button onclick="delCat(${gi},${ci})">Delete</button></div></div>
+      <div class="hint">${c.subcategories&&c.subcategories.length?"Sub: "+c.subcategories.map(esc).join(", "):"No sub-categories"}${c.price_hint?" · "+esc(c.price_hint):""}</div></div>`).join("")}
+    <div style="display:flex;gap:8px;margin-top:10px"><button class="btn ghost small" onclick="addCat(${gi})">+ Category</button>
+    <button class="btn danger small" onclick="delCatGroup(${gi})">Delete group</button></div></div>`).join("");
+}
+function addCatGroup(){const b=prompt("Brand/group name:");if(b){DB.cats.push({brand:b,slug:slugify(b),categories:[]});renderCats();}}
+function delCatGroup(gi){if(confirm("Delete this group and its categories?")){DB.cats.splice(gi,1);renderCats();}}
+function addCat(gi){
+  const n=prompt("Category name:"); if(!n)return;
+  const subs=prompt("Sub-categories (comma se alag karein, ya khaali):")||"";
+  DB.cats[gi].categories.push({name:n,price_hint:"",subcategories:subs.split(",").map(s=>s.trim()).filter(Boolean)});
+  renderCats();
+}
+function editCat(gi,ci){
+  const c=DB.cats[gi].categories[ci];
+  const n=prompt("Category name:",c.name); if(n===null)return;
+  const subs=prompt("Sub-categories (comma separated):",(c.subcategories||[]).join(", "));
+  c.name=n; c.subcategories=(subs||"").split(",").map(s=>s.trim()).filter(Boolean); renderCats();
+}
+function delCat(gi,ci){if(confirm("Delete category?")){DB.cats[gi].categories.splice(ci,1);renderCats();}}
+
+/* ---------- blog ---------- */
+function renderPosts(){
+  $("brow").innerHTML=DB.posts.map(p=>`<tr><td><b>${esc(p.title)}</b><br><span class="hint">${esc(p.slug)}</span></td>
+    <td>${esc(p.date||"")}</td>
+    <td><div class="actions"><button class="btn ghost small" onclick="openPostForm('${p.slug}')">Edit</button>
+    <button class="btn danger small" onclick="delPost('${p.slug}')">Delete</button></div></td></tr>`).join("")
+    ||`<tr><td colspan="3" class="hint">Koi post nahi.</td></tr>`;
+}
+function openPostForm(slug){
+  const p=slug?DB.posts.find(x=>x.slug===slug):null;
+  $("bfTitle").textContent=p?"Edit Post":"New Post";
+  $("b_slug_old").value=p?p.slug:""; $("b_title").value=p?p.title:"";
+  $("b_slug").value=p?p.slug:""; $("b_date").value=p?(p.date||new Date().toISOString().slice(0,10)):new Date().toISOString().slice(0,10);
+  $("b_cover").value=(p&&p.cover)||""; $("b_excerpt").value=(p&&p.excerpt)||"";
+  editingBlocks=p?JSON.parse(JSON.stringify(p.blocks||[])):[{type:"paragraph",text:""}];
+  stagedImg=null; renderBlocks();
+  $("bformCard").classList.remove("hidden"); $("bformCard").scrollIntoView({behavior:"smooth"});
+}
+function closePostForm(){$("bformCard").classList.add("hidden");}
+function delPost(slug){if(confirm("Delete this post?")){DB.posts=DB.posts.filter(p=>p.slug!==slug);renderPosts();}}
+function renderBlocks(){
+  const labels={heading:"Heading",paragraph:"Paragraph",image:"Image",quote:"Quote"};
+  $("blocks").innerHTML=editingBlocks.map((b,i)=>`<div class="block"><div class="block-head">
+    <span class="block-type">${labels[b.type]}</span>
+    <div class="bbtns"><button onclick="moveBlock(${i},-1)">↑</button><button onclick="moveBlock(${i},1)">↓</button><button onclick="delBlock(${i})">✕</button></div></div>
+    ${b.type==="image"
+      ?`<input type="file" accept="image/*" onchange="stageBlockImage(this,${i})"><input type="text" placeholder="or image URL" value="${esc(b.url||"")}" oninput="editingBlocks[${i}].url=this.value" style="margin-top:6px">${b.url?`<img src="${b.url}" class="preview">`:""}<input type="text" placeholder="Caption (optional)" value="${esc(b.caption||"")}" oninput="editingBlocks[${i}].caption=this.value" style="margin-top:6px">`
+      :`<textarea oninput="editingBlocks[${i}].text=this.value" placeholder="${b.type==="heading"?"Heading text":"Likhein..."}">${esc(b.text||"")}</textarea>`}
+    </div>`).join("");
+}
+function addBlock(t){editingBlocks.push(t==="image"?{type:t,url:""}:{type:t,text:""});renderBlocks();}
+function delBlock(i){editingBlocks.splice(i,1);renderBlocks();}
+function moveBlock(i,d){const j=i+d;if(j<0||j>=editingBlocks.length)return;const t=editingBlocks[i];editingBlocks[i]=editingBlocks[j];editingBlocks[j]=t;renderBlocks();}
+function stageBlockImage(input,i){
+  const f=input.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{editingBlocks[i].url="images/uploads/"+Date.now()+"-"+f.name.replace(/[^a-z0-9.]/gi,"-");
+    editingBlocks[i]._imgdata=r.result.split(",")[1];renderBlocks();setStatus("Block image ready.");};
+  r.readAsDataURL(f);
+}
+function savePost(){
+  const title=$("b_title").value.trim(); if(!title){alert("Title zaroori hai.");return;}
+  const slug=$("b_slug").value.trim()||slugify(title);
+  const rec={slug,title,date:$("b_date").value.trim(),excerpt:$("b_excerpt").value.trim(),
+    cover:$("b_cover").value.trim(),blocks:editingBlocks.map(b=>{const c={type:b.type};if(b.type==="image"){c.url=b.url||"";if(b.caption)c.caption=b.caption;if(b._imgdata)c._imgdata=b._imgdata;}else c.text=b.text||"";return c;})};
+  const old=$("b_slug_old").value;
+  const i=DB.posts.findIndex(p=>p.slug===(old||slug));
+  if(i>=0)DB.posts[i]=rec; else DB.posts.unshift(rec);
+  closePostForm(); renderPosts(); setStatus("Post saved locally — Publish dabayein.");
+}
+
+/* ---------- settings ---------- */
+function fillSettings(){$("s_wa").value=DB.settings.whatsapp||"";$("s_email").value=DB.settings.email||"";$("s_ann").value=DB.settings.announcement||"";}
+function saveSettings(){DB.settings={whatsapp:$("s_wa").value.trim(),email:$("s_email").value.trim(),announcement:$("s_ann").value.trim()};setStatus("Settings saved locally — Publish dabayein.");}
+
+/* ---------- publish ---------- */
+async function publish(){
+  if(!PW){alert("Pehle login karein.");return;}
+  const btn=$("pubBtn"); btn.disabled=true; setStatus("Publishing... (1-2 min lag sakta hai)");
+  try{
+    const files={
+      "data/products.json": JSON.stringify(DB.products,null,1),
+      "data/categories.json": JSON.stringify(DB.cats,null,1),
+      "data/posts.json": JSON.stringify(DB.posts,null,1),
+      "data/settings.json": JSON.stringify(DB.settings,null,1),
+    };
+    // staged images
+    if(stagedImg){
+      const path="images/uploads/"+Date.now()+"-"+stagedImg.name.replace(/[^a-z0-9.]/gi,"-");
+      files[path]=stagedImg.data;
+      if(stagedImgFor==="f_img")$("f_img").value=path;
+      if(stagedImgFor==="b_cover")$("b_cover").value=path;
+      // also patch the saved record's img to the uploaded path
+      const lastP=DB.products[DB.products.length-1];
+    }
+    DB.posts.forEach(p=>p.blocks.forEach(b=>{ if(b._imgdata){ files[b.url]=b._imgdata; delete b._imgdata; } }));
+    const r=await fetch("/api/publish",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({password:PW,files,message:"Admin panel publish"})});
+    const j=await r.json();
+    if(j.ok){ stagedImg=null; setStatus("Published! Site 1-2 minute mein update ho jayegi."); alert("Ho gaya! Site 1-2 minute mein update ho jayegi."); }
+    else setStatus("Error: "+(j.error||JSON.stringify(j.results)));
+  }catch(e){ setStatus("Network error: "+e.message); }
+  btn.disabled=false;
+}
+</script>
+</body>
+</html>

@@ -315,12 +315,12 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Hand-picked single pieces</span><span class="dot">◆</span><span>Every item graded &amp; photographed</span><span class="dot">◆</span><span>Ships worldwide</span><span class="dot">◆</span><span>Hand-picked single pieces</span><span class="dot">◆</span><span>Every item graded &amp; photographed</span><span class="dot">◆</span><span>Ships worldwide</span><span class="dot">◆</span></div></div>
 <header class="site-header"><div class="header-inner">
 <a class="brand" href="index.html"><span class="brand-mark">SV</span><span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span></a>
-<nav class="nav"><a class="nl" href="index.html#bales">Wholesale</a><a class="nl" href="retail.html">Retail</a><a class="nl" href="index.html#brands">Brands</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
+<nav class="nav"><a class="nl" href="index.html#bales">Wholesale</a><a class="nl" href="retail.html">Retail</a><a class="nl" href="index.html#brands">Brands</a><a class="nl" href="blog.html">Blog</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
 <div style="display:flex;gap:10px;align-items:center"><button class="btn" onclick="openCart()" style="padding:11px 24px">Cart (<span id="cartN">0</span>)</button><button class="burger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('drawerOv').classList.add('open')">☰</button></div>
 </div></header>
 <div class="drawer-overlay" id="drawerOv" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
 <aside class="drawer" id="drawer"><button class="drawer-close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('drawerOv').classList.remove('open')">×</button>
-<nav><a href="index.html">Home</a><a href="index.html#bales">Wholesale Bales</a><a href="retail.html">Retail Shop</a><a href="index.html#brands">Brands</a><a href="index.html#contact">Contact</a></nav></aside>
+<nav><a href="index.html">Home</a><a href="index.html#bales">Wholesale Bales</a><a href="retail.html">Retail Shop</a><a href="blog.html">Blog</a><a href="index.html#brands">Brands</a><a href="index.html#contact">Contact</a></nav></aside>
 
 <section class="retail-hero"><div class="wrap">
 <h1 class="display">Retail.<br>Hand-picked vintage.</h1>
@@ -365,7 +365,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 const WA="923205773262";
 const BRANDMAP={nike:"Nike",adidas:"Adidas",levis:"Levi's",carhartt:"Carhartt",tommy:"Tommy Hilfiger",champion:"Champion"};
 const JSON_BRANDS={"nike":1,"adidas":1,"levis":1,"carhartt":1,"tommy":1,"champion":1};
-const PRODUCTS=[
+const FALLBACK_PRODUCTS=[
 {id:"r1",name:"Vintage Nike Swoosh Tee",brand:"Nike",cat:"T-Shirts",size:"M",price:18,cond:"Light wash fade, no flaws",img:"images/retail/r1-tees.jpg"},
 {id:"r2",name:"Nike Vintage Hoodie",brand:"Nike",cat:"Hoodies",size:"L",price:35,cond:"Excellent, soft fleece",img:"images/retail/r2-hoodies.jpg"},
 {id:"r3",name:"Adidas Trefoil Tee",brand:"Adidas",cat:"T-Shirts",size:"M",price:16,cond:"Good, crisp print",img:"images/retail/r1-tees.jpg"},
@@ -379,6 +379,12 @@ const PRODUCTS=[
 {id:"r11",name:"Champion Reverse Weave Hoodie",brand:"Champion",cat:"Hoodies",size:"M",price:30,cond:"Excellent, heavy fleece",img:"images/retail/r2-hoodies.jpg"},
 {id:"r12",name:"Champion C-Logo Tee",brand:"Champion",cat:"T-Shirts",size:"S",price:15,cond:"Good, classic C print",img:"images/retail/r1-tees.jpg"}
 ];
+let PRODUCTS=FALLBACK_PRODUCTS.slice();
+/* Central CMS: admin panel publishes to data/products.json */
+fetch("data/products.json").then(r=>{if(!r.ok)throw 0;return r.json();}).then(all=>{
+  const rt=all.filter(p=>p.type==="retail");
+  if(rt.length){PRODUCTS=rt;render();renderCart();}
+}).catch(()=>{});
 let brand="All", cart={};
 function render(){
   const g=document.getElementById("rgrid");

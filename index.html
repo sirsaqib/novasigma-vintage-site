@@ -327,6 +327,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
       <a class="nl" href="#grades">Grades</a>
       <a class="nl" href="#process">Process</a>
       <a class="nl" href="#calculator">Calculator</a>
+      <a class="nl" href="blog.html">Blog</a>
       <a class="nl" href="#faq">FAQ</a>
       <a class="nl" href="#contact">Contact</a>
     </nav>
@@ -345,6 +346,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
     <a href="#grades" onclick="closeDrawer()">Grades</a>
     <a href="#process" onclick="closeDrawer()">Process</a>
     <a href="#calculator" onclick="closeDrawer()">Calculator</a>
+    <a href="blog.html" onclick="closeDrawer()">Blog</a>
     <a href="#faq" onclick="closeDrawer()">FAQ</a>
     <a href="#contact" onclick="closeDrawer()">Contact</a>
   </nav>
@@ -636,6 +638,15 @@ try {
   const wa = localStorage.getItem("nsv_wa");
   if (wa) CONFIG.whatsappNumber = wa;
 } catch(e){}
+/* Central CMS: data/products.json overrides baked-in data (admin panel publishes here) */
+fetch("data/products.json").then(r=>{ if(!r.ok) throw 0; return r.json(); }).then(all=>{
+  const ws = all.filter(p=>p.type==="wholesale");
+  if (ws.length){ PRODUCTS = ws; try{ renderProducts(); fillCalcSelect(); }catch(e){} }
+}).catch(()=>{});
+function fillCalcSelect(){
+  const sel = document.getElementById("calcBale"); if(!sel) return;
+  sel.innerHTML = PRODUCTS.map(p=>`<option value="${p.id}">${p.name} — $${p.price}</option>`).join("");
+}
 
 /* ================= TICKERS ================= */
 (function(){

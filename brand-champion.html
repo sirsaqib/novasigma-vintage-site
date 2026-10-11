@@ -294,12 +294,12 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Champion vintage in stock</span><span class="dot">◆</span><span>FOB Karachi</span><span class="dot">◆</span><span>Ships to USA · UK · EU</span><span class="dot">◆</span><span>Champion vintage in stock</span><span class="dot">◆</span><span>FOB Karachi</span><span class="dot">◆</span><span>Ships to USA · UK · EU</span><span class="dot">◆</span></div></div>
 <header class="site-header"><div class="header-inner">
 <a class="brand" href="index.html"><span class="brand-mark">SV</span><span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span></a>
-<nav class="nav"><a class="nl" href="index.html#bales">Bales</a><a class="nl" href="retail.html">Retail</a><a class="nl" href="index.html#brands">Brands</a><a class="nl" href="index.html#grades">Grades</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
+<nav class="nav"><a class="nl" href="index.html#bales">Bales</a><a class="nl" href="retail.html">Retail</a><a class="nl" href="index.html#brands">Brands</a><a class="nl" href="index.html#grades">Grades</a><a class="nl" href="blog.html">Blog</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
 <div style="display:flex;gap:10px;align-items:center"><button class="btn" onclick="openIq()" style="padding:11px 24px">Get a Quote</button><button class="burger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('drawerOv').classList.add('open')">☰</button></div>
 </div></header>
 <div class="drawer-overlay" id="drawerOv" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
 <aside class="drawer" id="drawer"><button class="drawer-close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('drawerOv').classList.remove('open')">×</button>
-<nav><a href="index.html">Home</a><a href="index.html#bales">Bales</a><a href="retail.html">Retail</a><a href="index.html#brands">Brands</a><a href="index.html#contact">Contact</a></nav></aside>
+<nav><a href="index.html">Home</a><a href="index.html#bales">Bales</a><a href="retail.html">Retail</a><a href="blog.html">Blog</a><a href="index.html#brands">Brands</a><a href="index.html#contact">Contact</a></nav></aside>
 
 <section class="bp-hero"><div class="wrap bp-hero-inner">
 <div class="blogo-wrap"><img src="images/logos/champion.png" alt="Champion logo"></div>
@@ -319,7 +319,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <section class="sec" id="listings" style="background:var(--sand);padding-top:80px"><div class="wrap">
 <div class="sec-head"><div class="kicker rv">Live listings</div><h2 class="sec-title display rv">Champion bundles</h2>
 <p class="sec-sub rv">Sizes are assorted S–XL unless stated — size ratios available on request before you order.</p></div>
-<div class="prod-scroll rv">
+<div class="prod-scroll rv" id="bpListings">
     <article class="pcard">
       <div class="pcard-img"><img src="images/media-generation-sorting-hands-0-4c39a63a-a739-4402-8077-88d7312dcb73.jpg" alt="30x Champion Hoodies Bundle" loading="lazy">
         <span class="grade-badge">Grade A</span>
@@ -398,6 +398,28 @@ const lines=IQ.map((p,i)=>`${i+1}. ${p.n} — ${p.p} (${p.g}, ${p.s})`).join("\n
 window.open("https://wa.me/"+WA+"?text="+encodeURIComponent("Assalam-o-Alaikum! Quote please for Champion vintage:\n\n"+lines)," _blank"); }
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+/* Central CMS: admin panel publishes to data/products.json + data/categories.json */
+(function(){
+  const BRAND="Champion";
+  fetch("data/products.json").then(r=>{if(!r.ok)throw 0;return r.json();}).then(all=>{
+    const list=all.filter(p=>p.type==="wholesale"&&p.brand===BRAND);
+    if(!list.length)return;
+    document.getElementById("bpListings").innerHTML=list.map(p=>`
+    <article class="pcard"><div class="pcard-img"><img src="${p.img}" alt="${p.name}" loading="lazy">
+      <span class="grade-badge${p.grade&&p.grade!=="A"?" gb-b":""}">Grade ${p.grade||"A"}</span>
+      <div class="pcard-quick"><button class="add-btn" style="width:100%;padding:13px" onclick="addIqB('${p.id}')">+ Add to Inquiry</button></div></div>
+      <div class="pcard-body"><div class="pcard-cat">${BRAND} · Wholesale bundle</div><h3>${p.name}</h3>
+      <div class="pcard-spec">${p.pcs?p.pcs+" pcs · ":""}${p.sizes||""} ${p.desc?"· "+p.desc:""}</div>
+      <div class="pcard-foot"><div class="price">$${p.price}<small> / bundle</small></div>
+      <button class="add-btn" onclick="addIqB('${p.id}')">Add +</button></div></div></article>`).join("");
+    PRODS.length=0;
+    list.forEach(p=>PRODS.push({n:p.name,p:"$"+p.price,g:"Grade "+(p.grade||"A"),s:((p.pcs?p.pcs+" pcs ":"")+(p.sizes||"")).trim(),_id:p.id}));
+  }).catch(()=>{});
+  window.addIqB=function(id){
+    const p=PRODS.find(x=>x._id===id);
+    if(p&&!IQ.includes(p))IQ.push(p); renderIq(); openIq();
+  };
+})();
 </script>
 </body>
 </html>
