@@ -1,0 +1,209 @@
+[
+ {
+  "brand": "Nike",
+  "slug": "nike",
+  "categories": [
+   {
+    "name": "T-Shirts",
+    "price_hint": "From $6.20/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Hoodies & Sweats",
+    "price_hint": "From $14/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Track Jackets",
+    "price_hint": "From $15/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Shorts",
+    "price_hint": "From $5.50/pc",
+    "subcategories": []
+   }
+  ]
+ },
+ {
+  "brand": "Adidas",
+  "slug": "adidas",
+  "categories": [
+   {
+    "name": "T-Shirts",
+    "price_hint": "From $5.90/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Hoodies",
+    "price_hint": "From $13.50/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Track Tops",
+    "price_hint": "From $14.50/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Shorts",
+    "price_hint": "From $5/pc",
+    "subcategories": []
+   }
+  ]
+ },
+ {
+  "brand": "Levi's",
+  "slug": "levis",
+  "categories": [
+   {
+    "name": "501 Jeans",
+    "price_hint": "From $13/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Denim Jackets",
+    "price_hint": "From $16/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Denim Shorts",
+    "price_hint": "From $6.50/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Denim Shirts",
+    "price_hint": "From $8/pc",
+    "subcategories": []
+   }
+  ]
+ },
+ {
+  "brand": "Carhartt",
+  "slug": "carhartt",
+  "categories": [
+   {
+    "name": "Work Jackets",
+    "price_hint": "From $22/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Overalls",
+    "price_hint": "From $18/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Beanies & Accessories",
+    "price_hint": "From $6/pc",
+    "subcategories": []
+   },
+   {
+    "name": "T-Shirts",
+    "price_hint": "From $6/pc",
+    "subcategories": []
+   }
+  ]
+ },
+ {
+  "brand": "Tommy Hilfiger",
+  "slug": "tommy",
+  "categories": [
+   {
+    "name": "Sweatshirts",
+    "price_hint": "From $11/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Polo Shirts",
+    "price_hint": "From $7.25/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Harrington Jackets",
+    "price_hint": "From $16.40/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Jeans",
+    "price_hint": "From $9/pc",
+    "subcategories": []
+   }
+  ]
+ },
+ {
+  "brand": "Champion",
+  "slug": "champion",
+  "categories": [
+   {
+    "name": "Hoodies",
+    "price_hint": "From $12/pc",
+    "subcategories": []
+   },
+   {
+    "name": "T-Shirts",
+    "price_hint": "From $5.60/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Sweatpants",
+    "price_hint": "From $10/pc",
+    "subcategories": []
+   },
+   {
+    "name": "Shorts",
+    "price_hint": "From $5/pc",
+    "subcategories": []
+   }
+  ]
+ },
+ {
+  "brand": "All",
+  "slug": "all",
+  "categories": [
+   {
+    "name": "Denim",
+    "price_hint": "",
+    "subcategories": []
+   },
+   {
+    "name": "T-Shirts",
+    "price_hint": "",
+    "subcategories": []
+   },
+   {
+    "name": "Hoodies",
+    "price_hint": "",
+    "subcategories": []
+   },
+   {
+    "name": "Jackets",
+    "price_hint": "",
+    "subcategories": []
+   },
+   {
+    "name": "Shirts",
+    "price_hint": "",
+    "subcategories": []
+   },
+   {
+    "name": "Fleece",
+    "price_hint": "",
+    "subcategories": []
+   },
+   {
+    "name": "Workwear",
+    "price_hint": "",
+    "subcategories": []
+   },
+   {
+    "name": "Shorts",
+    "price_hint": "",
+    "subcategories": []
+   },
+   {
+    "name": "Jeans",
+    "price_hint": "",
+    "subcategories": []
+   }
+  ]
+ }
+]
