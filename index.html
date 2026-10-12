@@ -273,7 +273,6 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .logo-marquee{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:30px 0;touch-action:pan-y;cursor:grab}
 .logo-marquee.dragging{cursor:grabbing}
 .lm-track{display:inline-flex;gap:30px;white-space:nowrap;align-items:center;padding-right:30px;will-change:transform}
-
 .lm-item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 40px;display:inline-flex;align-items:center;justify-content:center;height:112px;min-width:210px;transition:transform .3s,box-shadow .3s}
 .lm-item:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .lm-item img{height:66px;width:auto;max-width:200px;object-fit:contain}
@@ -359,7 +358,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 
 <!-- Hero -->
 <section class="hero" id="top">
-  <div class="hero-bg"><img id="heroImg" src="images/media-generation-hero-warehouse-0-6a372feb-4287-4406-9d98-584e7287b6a2.jpg" alt="Warehouse stacked with compressed bales of vintage clothing" fetchpriority="high"></div>
+  <div class="hero-bg"><img id="heroImg" src="images/hero-warehouse.jpg" alt="Warehouse stacked with compressed bales of vintage clothing" fetchpriority="high"></div>
   <div class="hero-inner">
     <div class="hero-kicker"><span>Wholesale vintage clothing · Karachi → World</span></div>
     <h1 class="display">
@@ -628,12 +627,12 @@ const BRANDS = [
 
 /* ================= PRODUCTS ================= */
 const DEFAULT_PRODUCTS = [
-  {id:"p1", name:"Vintage Denim Jackets Bale", cat:"Denim", brand:"Levi's", grade:"A", wt:"45kg", pcs:50,  price:425, img:"images/media-generation-denim-stack-0-0d57813b-f507-4249-98c7-aedd43def70e.jpg", desc:"Trucker & rider jackets, mixed washes. Sizes S–XL assorted."},
-  {id:"p2", name:"Vintage Graphic Tees Bale", cat:"T-Shirts", brand:"Nike", grade:"A", wt:"45kg", pcs:120, price:380, img:"images/media-generation-tees-stack-0-42fb06d3-ae96-453f-a521-762aa0a49093.jpg", desc:"Single-stitch & retro prints. Sizes S–XL assorted."},
-  {id:"p3", name:"Vintage Flannel Shirts Bale", cat:"Shirts", brand:"Mixed", grade:"A/B", wt:"45kg", pcs:90, price:340, img:"images/media-generation-flannel-jackets-0-4956d4c4-bf27-4ed5-8510-a09960d58bd6.jpg", desc:"Plaid flannels & work shirts. Sizes M–XL heavy."},
-  {id:"p4", name:"Vintage Leather Jackets Bundle", cat:"Jackets", brand:"Mixed", grade:"B", wt:"25kg", pcs:20, price:520, img:"images/media-generation-leather-jackets-0-300884f7-a43f-4b13-87b2-f2313a45dfe6.jpg", desc:"Genuine leather, biker & bomber styles. Sizes M–XL."},
-  {id:"p5", name:"Vintage Workwear Mix Bale", cat:"Workwear", brand:"Carhartt", grade:"A/B", wt:"45kg", pcs:60, price:460, img:"images/media-generation-bale-closeup-0-b5d495c7-5459-4fb5-9f79-5c8d2ac77ab6.jpg", desc:"Duck canvas jackets, overalls & beanies. Sizes M–XXL."},
-  {id:"p6", name:"Vintage Hoodies & Sweats Bale", cat:"Fleece", brand:"Champion", grade:"A", wt:"45kg", pcs:80, price:395, img:"images/media-generation-sorting-hands-0-4c39a63a-a739-4402-8077-88d7312dcb73.jpg", desc:"Hoodies, crews & sweatpants. Sizes S–XL assorted."}
+  {id:"p1", name:"Vintage Denim Jackets Bale", cat:"Denim", brand:"Levi's", grade:"A", wt:"45kg", pcs:50,  price:425, img:"images/wholesale/w-b-levis-1.jpg", desc:"Trucker & rider jackets, mixed washes. Sizes S–XL assorted."},
+  {id:"p2", name:"Vintage Graphic Tees Bale", cat:"T-Shirts", brand:"Nike", grade:"A", wt:"45kg", pcs:120, price:380, img:"images/wholesale/w-b-nike-1.jpg", desc:"Single-stitch & retro prints. Sizes S–XL assorted."},
+  {id:"p3", name:"Vintage Flannel Shirts Bale", cat:"Shirts", brand:"Mixed", grade:"A/B", wt:"45kg", pcs:90, price:340, img:"images/wholesale/w-b-carhartt-1.jpg", desc:"Plaid flannels & work shirts. Sizes M–XL heavy."},
+  {id:"p4", name:"Vintage Leather Jackets Bundle", cat:"Jackets", brand:"Mixed", grade:"B", wt:"25kg", pcs:20, price:520, img:"images/retail/r7-leather-jacket.jpg", desc:"Genuine leather, biker & bomber styles. Sizes M–XL."},
+  {id:"p5", name:"Vintage Workwear Mix Bale", cat:"Workwear", brand:"Carhartt", grade:"A/B", wt:"45kg", pcs:60, price:460, img:"images/wholesale/w-b-carhartt-2.jpg", desc:"Duck canvas jackets, overalls & beanies. Sizes M–XXL."},
+  {id:"p6", name:"Vintage Hoodies & Sweats Bale", cat:"Fleece", brand:"Champion", grade:"A", wt:"45kg", pcs:80, price:395, img:"images/wholesale/w-b-champion-1.jpg", desc:"Hoodies, crews & sweatpants. Sizes S–XL assorted."}
 ];
 let PRODUCTS = DEFAULT_PRODUCTS.slice();
 try {
@@ -664,7 +663,7 @@ function fillCalcSelect(){
   (function(){
     const mq = logoTrack.parentElement;
     let pos = 0, dragging = false, hoverPause = false, startX = 0, startPos = 0, moved = 0, lastT = performance.now();
-    const SPEED = 36;
+    const SPEED = 36; /* px/sec — matches the old 40s loop */
     const half = () => logoTrack.scrollWidth / 2;
     const norm = () => { const h = half(); if(!h) return; while(pos > 0) pos -= h; while(pos <= -h) pos += h; };
     function frame(t){

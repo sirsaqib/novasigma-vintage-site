@@ -252,9 +252,9 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .admin-box input,.admin-box textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:14px;font-family:'Inter'}
 .admin-row{display:flex;gap:10px;margin-top:22px}
 /* ---------- Logo marquee ---------- */
-.logo-marquee{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:30px 0}
-.lm-track{display:inline-flex;gap:30px;white-space:nowrap;animation:tick 40s linear infinite;align-items:center;padding-right:30px}
-.lm-track:hover{animation-play-state:paused}
+.logo-marquee{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:30px 0;touch-action:pan-y;cursor:grab}
+.logo-marquee.dragging{cursor:grabbing}
+.lm-track{display:inline-flex;gap:30px;white-space:nowrap;align-items:center;padding-right:30px;will-change:transform}
 .lm-item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 40px;display:inline-flex;align-items:center;justify-content:center;height:112px;min-width:210px;transition:transform .3s,box-shadow .3s}
 .lm-item:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .lm-item img{height:66px;width:auto;max-width:200px;object-fit:contain}
@@ -313,10 +313,10 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 
 <section class="sec"><div class="wrap">
 <div class="sec-head"><div class="kicker rv">Categories</div><h2 class="sec-title display rv">Shop Nike by category</h2></div>
-<div class="cat-tiles"><a class="cat-tile rv" href="#listings"><img src="images/media-generation-tees-stack-0-42fb06d3-ae96-453f-a521-762aa0a49093.jpg" alt="Nike vintage T-Shirts" loading="lazy"><div><h4>T-Shirts</h4><span>From $6.20/pc</span></div></a>
-<a class="cat-tile rv" href="#listings"><img src="images/media-generation-sorting-hands-0-4c39a63a-a739-4402-8077-88d7312dcb73.jpg" alt="Nike vintage Hoodies & Sweats" loading="lazy"><div><h4>Hoodies & Sweats</h4><span>From $14/pc</span></div></a>
-<a class="cat-tile rv" href="#listings"><img src="images/media-generation-flannel-jackets-0-4956d4c4-bf27-4ed5-8510-a09960d58bd6.jpg" alt="Nike vintage Track Jackets" loading="lazy"><div><h4>Track Jackets</h4><span>From $15/pc</span></div></a>
-<a class="cat-tile rv" href="#listings"><img src="images/media-generation-tees-stack-0-42fb06d3-ae96-453f-a521-762aa0a49093.jpg" alt="Nike vintage Shorts" loading="lazy"><div><h4>Shorts</h4><span>From $5.50/pc</span></div></a></div>
+<div class="cat-tiles"><a class="cat-tile rv" href="#listings"><img src="images/wholesale/w-b-nike-1.jpg" alt="Nike vintage T-Shirts" loading="lazy"><div><h4>T-Shirts</h4><span>From $6.20/pc</span></div></a>
+<a class="cat-tile rv" href="#listings"><img src="images/wholesale/w-b-nike-2.jpg" alt="Nike vintage Hoodies & Sweats" loading="lazy"><div><h4>Hoodies & Sweats</h4><span>From $14/pc</span></div></a>
+<a class="cat-tile rv" href="#listings"><img src="images/wholesale/w-b-nike-3.jpg" alt="Nike vintage Track Jackets" loading="lazy"><div><h4>Track Jackets</h4><span>From $15/pc</span></div></a>
+<a class="cat-tile rv" href="#listings"><img src="images/wholesale/w-b-nike-1.jpg" alt="Nike vintage Shorts" loading="lazy"><div><h4>Shorts</h4><span>From $5.50/pc</span></div></a></div>
 </div></section>
 
 <section class="sec" id="listings" style="background:var(--sand);padding-top:80px"><div class="wrap">
@@ -324,7 +324,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <p class="sec-sub rv">Sizes are assorted S–XL unless stated — size ratios available on request before you order.</p></div>
 <div class="prod-scroll rv" id="bpListings">
     <article class="pcard">
-      <div class="pcard-img"><img src="images/media-generation-tees-stack-0-42fb06d3-ae96-453f-a521-762aa0a49093.jpg" alt="50x Nike Vintage T-Shirts Bundle" loading="lazy">
+      <div class="pcard-img"><img src="images/wholesale/w-b-nike-1.jpg" alt="50x Nike Vintage T-Shirts Bundle" loading="lazy">
         <span class="grade-badge">Grade A</span>
         <div class="pcard-quick"><button class="add-btn" style="width:100%;padding:13px" onclick="addIq(0)">+ Add to Inquiry</button></div></div>
       <div class="pcard-body"><div class="pcard-cat">Nike · Wholesale bundle</div><h3>50x Nike Vintage T-Shirts Bundle</h3>
@@ -333,7 +333,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
         <button class="add-btn" onclick="addIq(0)">Add +</button></div></div>
     </article>
     <article class="pcard">
-      <div class="pcard-img"><img src="images/media-generation-sorting-hands-0-4c39a63a-a739-4402-8077-88d7312dcb73.jpg" alt="30x Nike Hoodies Bundle" loading="lazy">
+      <div class="pcard-img"><img src="images/wholesale/w-b-nike-2.jpg" alt="30x Nike Hoodies Bundle" loading="lazy">
         <span class="grade-badge">Grade A</span>
         <div class="pcard-quick"><button class="add-btn" style="width:100%;padding:13px" onclick="addIq(1)">+ Add to Inquiry</button></div></div>
       <div class="pcard-body"><div class="pcard-cat">Nike · Wholesale bundle</div><h3>30x Nike Hoodies Bundle</h3>
@@ -342,7 +342,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
         <button class="add-btn" onclick="addIq(1)">Add +</button></div></div>
     </article>
     <article class="pcard">
-      <div class="pcard-img"><img src="images/media-generation-flannel-jackets-0-4956d4c4-bf27-4ed5-8510-a09960d58bd6.jpg" alt="25x Nike Track Jackets Bundle" loading="lazy">
+      <div class="pcard-img"><img src="images/wholesale/w-b-nike-3.jpg" alt="25x Nike Track Jackets Bundle" loading="lazy">
         <span class="grade-badge gb-b">Grade A/B</span>
         <div class="pcard-quick"><button class="add-btn" style="width:100%;padding:13px" onclick="addIq(2)">+ Add to Inquiry</button></div></div>
       <div class="pcard-body"><div class="pcard-cat">Nike · Wholesale bundle</div><h3>25x Nike Track Jackets Bundle</h3>
