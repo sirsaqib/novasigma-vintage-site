@@ -8,7 +8,9 @@
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap"></noscript>
 <style>
 :root{
   --cream:#f4efe6; --sand:#e9dfcd; --ink:#1a1512; --ink2:#2b241d;
@@ -313,10 +315,10 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .drop-sec a:hover{color:#b4502a}
 @media(max-width:900px){.nl-drop{display:none}}
 </style>
-</head>
+<style>.foot-badge{width:110px;height:110px;border-radius:50%;margin-bottom:14px;display:block}</style></head>
 <body>
 <header class="site-header"><div class="header-inner">
-<a class="brand" href="./"><img class="brand-mark" src="images/logo.png" alt="Sigma Vintage Wear logo"><span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span></a>
+<a class="brand" href="./"><img class="brand-mark" src="images/logo-sm.png" alt="Sigma Vintage Wear logo"><span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span></a>
 <nav class="nav"><a class="nl" href="index.html#bales">Wholesale</a><div class="nl-drop"><button class="nl drop-btn" aria-haspopup="true">Shop &#9662;</button><div class="drop-menu"><div class="drop-sec"><span>Categories</span><a href="vintage-tshirts-wholesale">T-Shirts</a><a href="vintage-hoodies-wholesale">Sweatshirts &amp; Hoodies</a><a href="vintage-jackets-wholesale">Jackets</a><a href="vintage-jeans-wholesale">Jeans &amp; Pants</a><a href="vintage-shirts-wholesale">Shirts &amp; Polos</a><a href="vintage-grails-wholesale">Rare &amp; Grails</a></div><div class="drop-sec"><span>Brands</span><a href="nike-vintage-clothing-wholesale">Nike</a><a href="adidas-vintage-clothing-wholesale">Adidas</a><a href="levis-vintage-clothing-wholesale">Levi&apos;s</a><a href="carhartt-vintage-clothing-wholesale">Carhartt</a><a href="tommy-hilfiger-vintage-clothing-wholesale">Tommy Hilfiger</a><a href="champion-vintage-clothing-wholesale">Champion</a></div></div></div><a class="nl" href="retail">Retail</a><a class="nl" href="blog">Blog</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
 <div style="display:flex;gap:10px;align-items:center"><a class="btn" href="index.html#contact" style="padding:11px 24px">Get a Quote</a><button class="burger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('drawerOv').classList.add('open')">☰</button></div>
 </div></header>
@@ -325,7 +327,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <nav><a href="./">Home</a><a href="index.html#bales">Wholesale Bales</a><a href="retail">Retail Shop</a><a href="blog">Blog</a><a href="index.html#contact">Contact</a><div style="margin:14px 0 6px;font-size:11px;font-weight:800;letter-spacing:2px;color:#8a7a5f">SHOP CATEGORIES</div><a href="vintage-tshirts-wholesale" onclick="closeDrawer()">T-Shirts</a><a href="vintage-hoodies-wholesale" onclick="closeDrawer()">Hoodies</a><a href="vintage-jackets-wholesale" onclick="closeDrawer()">Jackets</a><a href="vintage-jeans-wholesale" onclick="closeDrawer()">Jeans &amp; Pants</a><a href="vintage-shirts-wholesale" onclick="closeDrawer()">Shirts</a><a href="vintage-grails-wholesale" onclick="closeDrawer()">Rare &amp; Grails</a><div style="margin:14px 0 6px;font-size:11px;font-weight:800;letter-spacing:2px;color:#8a7a5f">BRANDS</div><a href="nike-vintage-clothing-wholesale" onclick="closeDrawer()">Nike</a><a href="adidas-vintage-clothing-wholesale" onclick="closeDrawer()">Adidas</a><a href="levis-vintage-clothing-wholesale" onclick="closeDrawer()">Levi&apos;s</a><a href="carhartt-vintage-clothing-wholesale" onclick="closeDrawer()">Carhartt</a><a href="tommy-hilfiger-vintage-clothing-wholesale" onclick="closeDrawer()">Tommy Hilfiger</a><a href="champion-vintage-clothing-wholesale" onclick="closeDrawer()">Champion</a></nav></aside>
 <article class="article" id="art"><a class="back" href="blog">← All posts</a><div id="body"><p>Loading...</p></div></article>
 <footer><div class="wrap">
-<div class="foot-grid"><div class="foot-brand"><span class="brand-name" style="color:#fff">SIGMA<small>VINTAGE WEAR</small></span>
+<div class="foot-grid"><div class="foot-brand"><img src="images/logo-badge.png" alt="Sigma Vintage Wear — Wholesale Export badge" class="foot-badge" loading="lazy" width="120" height="120"><span class="brand-name" style="color:#fff">SIGMA<small>VINTAGE WEAR</small></span>
 <p>Graded vintage clothing — wholesale bales &amp; hand-picked retail, from Karachi to the world.</p></div>
 <div><h4>Shop</h4><a href="index.html#bales">Wholesale bales</a><a href="retail">Retail shop</a><a href="blog">Blog</a><a href="index.html#calculator">Profit calculator</a></div>
 <div><h4>Brands</h4><a href="nike-vintage-clothing-wholesale">Nike vintage</a><a href="adidas-vintage-clothing-wholesale">Adidas vintage</a><a href="levis-vintage-clothing-wholesale">Levi's vintage</a><a href="carhartt-vintage-clothing-wholesale">Carhartt vintage</a><a href="tommy-hilfiger-vintage-clothing-wholesale">Tommy Hilfiger vintage</a><a href="champion-vintage-clothing-wholesale">Champion vintage</a></div>
