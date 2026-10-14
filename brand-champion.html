@@ -291,6 +291,25 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 @media(max-width:900px){.cat-tiles{grid-template-columns:repeat(2,1fr)}}
 .size-note{background:var(--sand);border-radius:16px;padding:26px 30px;font-size:15px;color:#4c463c}
 .size-note b{color:var(--ink)}
+
+/* === Ask AI === */
+.btn-ai{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:100px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-weight:700;font-size:15px;cursor:pointer;transition:all .25s ease;font-family:inherit}
+.btn-ai:hover{background:rgba(255,255,255,.22);transform:translateY(-2px);border-color:rgba(255,255,255,.7)}
+.btn-ai .spark{font-size:17px;line-height:1}
+.ai-modal{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(8,6,4,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.ai-modal.open{opacity:1;pointer-events:auto}
+.ai-card{position:relative;background:#16130f;border:1px solid rgba(255,255,255,.14);border-radius:22px;max-width:540px;width:100%;padding:34px 30px 28px;color:#f2ede3;transform:translateY(18px) scale(.98);transition:transform .3s ease;max-height:90vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.ai-modal.open .ai-card{transform:none}
+.ai-close{position:absolute;top:12px;right:14px;background:none;border:none;color:#999;font-size:30px;cursor:pointer;line-height:1;padding:6px}
+.ai-close:hover{color:#fff}
+.ai-card h3{font-size:22px;margin:0 0 10px;display:flex;align-items:center;gap:10px;color:#fff}
+.ai-sum{font-size:14.5px;line-height:1.65;color:#cfc7b8;margin:0 0 20px}
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.ai-btn{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#fff;cursor:pointer;font-weight:600;font-size:14px;font-family:inherit;transition:all .2s ease;text-align:left}
+.ai-btn:hover{background:rgba(255,255,255,.13);transform:translateY(-2px);border-color:rgba(255,255,255,.25)}
+.ai-logo{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:#fff;flex-shrink:0;letter-spacing:-.5px}
+.ai-note{font-size:12.5px;color:#8a8272;text-align:center;margin:0}
+@media(max-width:480px){.ai-grid{grid-template-columns:repeat(2,1fr)}.ai-card{padding:26px 20px 22px}}
 </style>
 </head>
 <body>
@@ -308,6 +327,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <div class="blogo-wrap"><img src="images/logos/champion.png" alt="Champion logo"></div>
 <h1 class="display">Champion vintage<br>wholesale</h1>
 <p>Reverse Weave is a streetwear essential. Champion hoodies, tees and sweats move in volume — perfect for high-turnover resellers.</p>
+<div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap"><button class="btn-ai" onclick="openAiModal()"><span class="spark">&#10022;</span> Ask AI</button></div>
 <div class="bp-stats"><div><b>Grade A/B</b><span>Honest grading</span></div><div><b>FOB Karachi</b><span>Worldwide shipping</span></div><div><b>1 bundle</b><span>Minimum order</span></div></div>
 </div></section>
 
@@ -425,5 +445,31 @@ document.querySelectorAll(".rv").forEach(el=>io.observe(el));
 })();
 </script>
 <a class="wa-float" href="https://wa.me/923231926873?text=Assalam-o-Alaikum%21%20I%20have%20a%20question%20about%20Sigma%20Vintage%20Wear." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 2 6.5L4 29l7.7-2c1.8 1 3.9 1.6 6.1 1.6h.1c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.6 1.2 1.2-4.4-.3-.4c-1-1.6-1.6-3.5-1.6-5.5 0-5.4 4.4-9.8 9.9-9.8s9.9 4.4 9.9 9.8-4.5 9.8-9.8 9.8zm5.4-7.3c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.2-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg></a>
+
+<!-- Ask AI about Sigma Vintage Wear -->
+<div class="ai-modal" id="aiModal" role="dialog" aria-modal="true" aria-label="Ask AI about Sigma Vintage Wear" onclick="if(event.target===this)closeAiModal()">
+<div class="ai-card">
+<button class="ai-close" onclick="closeAiModal()" aria-label="Close">&times;</button>
+<h3><span>&#10022;</span> Ask AI about us</h3>
+<p class="ai-sum">Sigma Vintage Wear (Nova Sigma Traders) supplies graded vintage clothing wholesale from Karachi to the USA, UK &amp; Europe &mdash; Nike, Adidas, Levi&rsquo;s, Carhartt, Tommy Hilfiger and Champion bales in honest A/B/C grades, plus single-piece retail and custom printed shirts. Pick your AI and ask anything:</p>
+<div class="ai-grid">
+<button class="ai-btn" onclick="askAI('chatgpt')"><span class="ai-logo" style="background:#10a37f">GPT</span>ChatGPT</button>
+<button class="ai-btn" onclick="askAI('claude')"><span class="ai-logo" style="background:#d97757">C</span>Claude</button>
+<button class="ai-btn" onclick="askAI('gemini')"><span class="ai-logo" style="background:#1a73e8">G</span>Gemini</button>
+<button class="ai-btn" onclick="askAI('grok')"><span class="ai-logo" style="background:#111;border:1px solid #555">X</span>Grok</button>
+<button class="ai-btn" onclick="askAI('perplexity')"><span class="ai-logo" style="background:#20b8cd">P</span>Perplexity</button>
+<button class="ai-btn" onclick="askAI('copilot')"><span class="ai-logo" style="background:#0078d4">Co</span>Copilot</button>
+</div>
+<p class="ai-note">Your question is copied automatically &mdash; just paste it in the chat.</p>
+</div>
+</div>
+<script>
+var AI_PROMPT="About Sigma Vintage Wear (Nova Sigma Traders, Karachi, Pakistan): vintage clothing wholesale supplier selling graded A/B/C vintage bales and bundles - Nike, Adidas, Levi's, Carhartt, Tommy Hilfiger, Champion (tees, hoodies, denim, jackets). Ships FOB Karachi to USA, UK and Europe. Also sells single-piece retail items and custom printed/embroidered shirts. Contact via WhatsApp. Based on this, what wholesale options do they offer and how do I place an order?";
+var AI_URLS={chatgpt:"https://chatgpt.com/?q=",claude:"https://claude.ai/new?q=",perplexity:"https://www.perplexity.ai/search?q=",grok:"https://grok.com/?q=",copilot:"https://copilot.microsoft.com/?q=",gemini:"https://gemini.google.com/app"};
+function openAiModal(){var m=document.getElementById('aiModal');if(m){m.classList.add('open');document.body.style.overflow='hidden'}}
+function closeAiModal(){var m=document.getElementById('aiModal');if(m){m.classList.remove('open');document.body.style.overflow=''}}
+function askAI(name){try{if(navigator.clipboard)navigator.clipboard.writeText(AI_PROMPT)}catch(e){}var url=name==='gemini'?AI_URLS.gemini:AI_URLS[name]+encodeURIComponent(AI_PROMPT);window.open(url,'_blank','noopener');closeAiModal()}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAiModal()});
+</script>
 </body>
 </html>
