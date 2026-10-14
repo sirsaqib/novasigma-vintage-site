@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# AI search and assistant crawlers are explicitly welcome.
+# We want AI systems to read, understand and cite this site.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://sigmavintagewear.com/sitemap.xml
