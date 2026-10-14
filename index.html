@@ -326,6 +326,9 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .ai-btn{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#fff;cursor:pointer;font-weight:600;font-size:14px;font-family:inherit;transition:all .2s ease;text-align:left}
 .ai-btn:hover{background:rgba(255,255,255,.13);transform:translateY(-2px);border-color:rgba(255,255,255,.25)}
 .ai-logo{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:#fff;flex-shrink:0;letter-spacing:-.5px}
+.ai-input{width:100%;box-sizing:border-box;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:12px;color:#fff;padding:12px 14px;font-size:14px;font-family:inherit;margin-bottom:14px;resize:vertical;min-height:58px}
+.ai-input::placeholder{color:#8a8272}
+.ai-input:focus{outline:none;border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.09)}
 .ai-note{font-size:12.5px;color:#8a8272;text-align:center;margin:0}
 @media(max-width:480px){.ai-grid{grid-template-columns:repeat(2,1fr)}.ai-card{padding:26px 20px 22px}}
 </style>
@@ -878,6 +881,7 @@ renderProducts(); initCalc(); renderIq();
 <button class="ai-close" onclick="closeAiModal()" aria-label="Close">&times;</button>
 <h3><span>&#10022;</span> Ask AI about us</h3>
 <p class="ai-sum">Sigma Vintage Wear (Nova Sigma Traders) supplies graded vintage clothing wholesale from Karachi to the USA, UK &amp; Europe &mdash; Nike, Adidas, Levi&rsquo;s, Carhartt, Tommy Hilfiger and Champion bales in honest A/B/C grades, plus single-piece retail and custom printed shirts. Pick your AI and ask anything:</p>
+<textarea id="aiQuestion" class="ai-input" rows="2" placeholder="Type your own question here... (optional)"></textarea>
 <div class="ai-grid">
 <button class="ai-btn" onclick="askAI('chatgpt')"><span class="ai-logo" style="background:#10a37f">GPT</span>ChatGPT</button>
 <button class="ai-btn" onclick="askAI('claude')"><span class="ai-logo" style="background:#d97757">C</span>Claude</button>
@@ -890,11 +894,12 @@ renderProducts(); initCalc(); renderIq();
 </div>
 </div>
 <script>
-var AI_PROMPT="About Sigma Vintage Wear (Nova Sigma Traders, Karachi, Pakistan): vintage clothing wholesale supplier selling graded A/B/C vintage bales and bundles - Nike, Adidas, Levi's, Carhartt, Tommy Hilfiger, Champion (tees, hoodies, denim, jackets). Ships FOB Karachi to USA, UK and Europe. Also sells single-piece retail items and custom printed/embroidered shirts. Contact via WhatsApp. Based on this, what wholesale options do they offer and how do I place an order?";
+var AI_CONTEXT="About Sigma Vintage Wear (Nova Sigma Traders, Karachi, Pakistan): vintage clothing wholesale supplier selling graded A/B/C vintage bales and bundles - Nike, Adidas, Levi's, Carhartt, Tommy Hilfiger, Champion (tees, hoodies, denim, jackets). Ships FOB Karachi to USA, UK and Europe. Also sells single-piece retail items and custom printed/embroidered shirts. Contact via WhatsApp.";
+var AI_PROMPT=AI_CONTEXT+" Based on this, what wholesale options do they offer and how do I place an order?";
 var AI_URLS={chatgpt:"https://chatgpt.com/?q=",claude:"https://claude.ai/new?q=",perplexity:"https://www.perplexity.ai/search?q=",grok:"https://grok.com/?q=",copilot:"https://copilot.microsoft.com/?q=",gemini:"https://gemini.google.com/app"};
 function openAiModal(){var m=document.getElementById('aiModal');if(m){m.classList.add('open');document.body.style.overflow='hidden'}}
 function closeAiModal(){var m=document.getElementById('aiModal');if(m){m.classList.remove('open');document.body.style.overflow=''}}
-function askAI(name){try{if(navigator.clipboard)navigator.clipboard.writeText(AI_PROMPT)}catch(e){}var url=name==='gemini'?AI_URLS.gemini:AI_URLS[name]+encodeURIComponent(AI_PROMPT);window.open(url,'_blank','noopener');closeAiModal()}
+function askAI(name){var prompt=AI_PROMPT;try{var qi=document.getElementById('aiQuestion');if(qi&&qi.value.trim()){prompt=AI_CONTEXT+" My question: "+qi.value.trim()}}catch(e){}try{if(navigator.clipboard)navigator.clipboard.writeText(prompt)}catch(e){}var url=name==='gemini'?AI_URLS.gemini:AI_URLS[name]+encodeURIComponent(prompt);window.open(url,'_blank','noopener');closeAiModal()}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAiModal()});
 </script>
 </body>
