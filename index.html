@@ -342,6 +342,17 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .ai-more-lbl{color:#8a8272;font-size:13px;margin-right:2px}
 .ai-more-btn{padding:9px 18px;border-radius:100px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff!important;font-size:13.5px;font-weight:600;text-decoration:none;transition:all .2s ease;font-family:inherit}
 .ai-more-btn:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
+
+/* === SHOP dropdown === */
+.nl-drop{position:relative;display:inline-block}
+.drop-btn{background:none;border:none;cursor:pointer;font:inherit;color:inherit;padding:0}
+.drop-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);background:#fffdf8;border:1px solid rgba(0,0,0,.1);border-radius:16px;box-shadow:0 20px 55px rgba(0,0,0,.16);padding:20px 22px;display:flex;gap:30px;min-width:440px;opacity:0;pointer-events:none;transition:all .22s ease;z-index:200}
+.nl-drop:hover .drop-menu,.nl-drop:focus-within .drop-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.drop-sec{min-width:170px}
+.drop-sec>span{display:block;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8a7a5f;margin-bottom:8px}
+.drop-sec a{display:block;padding:7px 0;color:#1c1712;text-decoration:none;font-size:14.5px;font-weight:500}
+.drop-sec a:hover{color:#b4502a}
+@media(max-width:900px){.nl-drop{display:none}}
 </style>
 </head>
 
@@ -358,7 +369,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
       <span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span>
     </a>
     <nav class="nav" aria-label="Main">
-      <a class="nl" href="#bales">Bales</a>
+      <a class="nl" href="#bales">Bales</a><div class="nl-drop"><button class="nl drop-btn" aria-haspopup="true">Shop &#9662;</button><div class="drop-menu"><div class="drop-sec"><span>Categories</span><a href="vintage-tshirts-wholesale.html">T-Shirts</a><a href="vintage-hoodies-wholesale.html">Sweatshirts &amp; Hoodies</a><a href="vintage-jackets-wholesale.html">Jackets</a><a href="vintage-jeans-wholesale.html">Jeans &amp; Pants</a><a href="vintage-shirts-wholesale.html">Shirts &amp; Polos</a><a href="vintage-grails-wholesale.html">Rare &amp; Grails</a></div><div class="drop-sec"><span>Brands</span><a href="nike-vintage-clothing-wholesale.html">Nike</a><a href="adidas-vintage-clothing-wholesale.html">Adidas</a><a href="levis-vintage-clothing-wholesale.html">Levi&apos;s</a><a href="carhartt-vintage-clothing-wholesale.html">Carhartt</a><a href="tommy-hilfiger-vintage-clothing-wholesale.html">Tommy Hilfiger</a><a href="champion-vintage-clothing-wholesale.html">Champion</a></div></div></div>
       <a class="nl" href="retail.html">Retail</a>
       <a class="nl" href="#grades">Grades</a>
       <a class="nl" href="#process">Process</a>
@@ -385,7 +396,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
     <a href="blog.html" onclick="closeDrawer()">Blog</a>
     <a href="#faq" onclick="closeDrawer()">FAQ</a>
     <a href="#contact" onclick="closeDrawer()">Contact</a>
-  </nav>
+  <div style="margin:14px 0 6px;font-size:11px;font-weight:800;letter-spacing:2px;color:#8a7a5f">SHOP CATEGORIES</div><a href="vintage-tshirts-wholesale.html" onclick="closeDrawer()">T-Shirts</a><a href="vintage-hoodies-wholesale.html" onclick="closeDrawer()">Hoodies</a><a href="vintage-jackets-wholesale.html" onclick="closeDrawer()">Jackets</a><a href="vintage-jeans-wholesale.html" onclick="closeDrawer()">Jeans &amp; Pants</a><a href="vintage-shirts-wholesale.html" onclick="closeDrawer()">Shirts</a><a href="vintage-grails-wholesale.html" onclick="closeDrawer()">Rare &amp; Grails</a><div style="margin:14px 0 6px;font-size:11px;font-weight:800;letter-spacing:2px;color:#8a7a5f">BRANDS</div><a href="nike-vintage-clothing-wholesale.html" onclick="closeDrawer()">Nike</a><a href="adidas-vintage-clothing-wholesale.html" onclick="closeDrawer()">Adidas</a><a href="levis-vintage-clothing-wholesale.html" onclick="closeDrawer()">Levi&apos;s</a><a href="carhartt-vintage-clothing-wholesale.html" onclick="closeDrawer()">Carhartt</a><a href="tommy-hilfiger-vintage-clothing-wholesale.html" onclick="closeDrawer()">Tommy Hilfiger</a><a href="champion-vintage-clothing-wholesale.html" onclick="closeDrawer()">Champion</a></nav>
   <button class="btn" onclick="closeDrawer();openIq()" style="margin-top:auto">Get a Quote</button>
 </aside>
 
@@ -465,6 +476,26 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
       <p class="sec-sub rv">Every brand gets its own page — categories, sizes, grades and live bale listings. Pick your label.</p>
     </div>
     <div class="brand-grid" id="brandGrid"></div>
+  </div>
+</section>
+
+
+<!-- Categories -->
+<section class="sec" id="categories" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker rv">Wholesale categories</div>
+      <h2 class="sec-title display rv">Shop by category</h2>
+      <p class="sec-sub rv">Every category sorted, graded and baled in Karachi — tees to grails. Pick your lane.</p>
+    </div>
+    <div class="brand-grid">
+<a class="brand-card rv" href="vintage-tshirts-wholesale.html"><img src="images/retail/r1-tees.jpg" alt="T-Shirts vintage wholesale" loading="lazy"><h3>T-Shirts</h3><p>Single-stitch, band & branded tees</p><span class="go">View category →</span></a>
+<a class="brand-card rv" href="vintage-hoodies-wholesale.html"><img src="images/retail/r2-hoodies.jpg" alt="Hoodies & Sweats vintage wholesale" loading="lazy"><h3>Hoodies & Sweats</h3><p>Reverse Weave, fleece & blanks</p><span class="go">View category →</span></a>
+<a class="brand-card rv" href="vintage-jackets-wholesale.html"><img src="images/retail/r7-leather-jacket.jpg" alt="Jackets vintage wholesale" loading="lazy"><h3>Jackets</h3><p>Workwear, denim, technical & military</p><span class="go">View category →</span></a>
+<a class="brand-card rv" href="vintage-jeans-wholesale.html"><img src="images/retail/r5-folded-jeans.jpg" alt="Jeans & Pants vintage wholesale" loading="lazy"><h3>Jeans & Pants</h3><p>501s, Lee Pipes, workwear pants</p><span class="go">View category →</span></a>
+<a class="brand-card rv" href="vintage-shirts-wholesale.html"><img src="images/retail/r4-shirts-rack.jpg" alt="Shirts & Polos vintage wholesale" loading="lazy"><h3>Shirts & Polos</h3><p>Loop-collar polos & flannels</p><span class="go">View category →</span></a>
+<a class="brand-card rv" href="vintage-grails-wholesale.html"><img src="images/retail/r8-flannel-shirt.jpg" alt="Rare & Grails vintage wholesale" loading="lazy"><h3>Rare & Grails</h3><p>RRL, designer & collectibles</p><span class="go">View category →</span></a>
+    </div>
   </div>
 </section>
 
@@ -670,12 +701,12 @@ const CONFIG = {
 
 /* ================= BRANDS ================= */
 const BRANDS = [
-  {slug:"nike",    name:"Nike",            logo:"images/logos/nike.png",    blurb:"Swoosh tees, hoodies & track jackets — the fastest-moving vintage on the planet."},
-  {slug:"adidas",  name:"Adidas",          logo:"images/logos/adidas.png",  blurb:"Trefoil classics and 3-stripe staples. Huge demand in EU streetwear."},
-  {slug:"levis",   name:"Levi's",          logo:"images/logos/levis.png",   blurb:"501s, truckers & denim jackets. The backbone of every vintage store."},
-  {slug:"carhartt",name:"Carhartt",        logo:"images/logos/carhartt.png",blurb:"Workwear jackets, beanies & duck canvas. Premium resale margins."},
-  {slug:"tommy",   name:"Tommy Hilfiger",  logo:"images/logos/tommy.png",   blurb:"90s flag-logo sweatshirts, polos & Harrington jackets."},
-  {slug:"champion",name:"Champion",        logo:"images/logos/champion.png",blurb:"Reverse Weave sweats & C-logo tees. Streetwear essential."}
+  {slug:"nike",page:"nike-vintage-clothing-wholesale",    name:"Nike",            logo:"images/logos/nike.png",    blurb:"Swoosh tees, hoodies & track jackets — the fastest-moving vintage on the planet."},
+  {slug:"adidas",page:"adidas-vintage-clothing-wholesale",  name:"Adidas",          logo:"images/logos/adidas.png",  blurb:"Trefoil classics and 3-stripe staples. Huge demand in EU streetwear."},
+  {slug:"levis",page:"levis-vintage-clothing-wholesale",   name:"Levi's",          logo:"images/logos/levis.png",   blurb:"501s, truckers & denim jackets. The backbone of every vintage store."},
+  {slug:"carhartt",page:"carhartt-vintage-clothing-wholesale",name:"Carhartt",        logo:"images/logos/carhartt.png",blurb:"Workwear jackets, beanies & duck canvas. Premium resale margins."},
+  {slug:"tommy",page:"tommy-hilfiger-vintage-wholesale",   name:"Tommy Hilfiger",  logo:"images/logos/tommy.png",   blurb:"90s flag-logo sweatshirts, polos & Harrington jackets."},
+  {slug:"champion",page:"champion-vintage-clothing-wholesale",name:"Champion",        logo:"images/logos/champion.png",blurb:"Reverse Weave sweats & C-logo tees. Streetwear essential."}
 ];
 
 /* ================= PRODUCTS ================= */
@@ -709,7 +740,7 @@ function fillCalcSelect(){
   const items = ["Grade A bales in stock","FOB Karachi","Ships to USA · UK · EU","T/T & L/C accepted","New stock every week"];
   const html = items.map(t=>`<span>${t}</span><span class="dot">◆</span>`).join("");
   document.getElementById("tickerTrack").innerHTML = html + html;
-  const logos = BRANDS.map(b=>`<a class="lm-item" href="brand-${b.slug}.html" title="${b.name} vintage wholesale"><img src="${b.logo}" alt="${b.name} logo" loading="lazy" draggable="false"></a>`).join("");
+  const logos = BRANDS.map(b=>`<a class="lm-item" href="${b.page}.html" title="${b.name} vintage wholesale"><img src="${b.logo}" alt="${b.name} logo" loading="lazy" draggable="false"></a>`).join("");
   const logoTrack = document.getElementById("logoTrack");
   logoTrack.innerHTML = logos + logos;
   /* Logo marquee: auto-run + drag/swipe (either direction) */
@@ -747,11 +778,11 @@ function fillCalcSelect(){
 
 /* ================= BRAND GRID + FOOTER ================= */
 document.getElementById("brandGrid").innerHTML = BRANDS.map(b=>`
-  <a class="brand-card rv" href="brand-${b.slug}.html">
+  <a class="brand-card rv" href="${b.page}.html">
     <img src="${b.logo}" alt="${b.name} vintage wholesale" loading="lazy">
     <h3>${b.name}</h3><p>${b.blurb}</p><span class="go">View brand page →</span>
   </a>`).join("");
-document.getElementById("footBrands").innerHTML = BRANDS.map(b=>`<a href="brand-${b.slug}.html">${b.name} vintage</a>`).join("");
+document.getElementById("footBrands").innerHTML = BRANDS.map(b=>`<a href="${b.page}.html">${b.name} vintage</a>`).join("");
 
 /* ================= PRODUCTS ================= */
 function gradeClass(g){ return g.indexOf("A")===0 && g!=="A/B" ? "" : "gb-b"; }
