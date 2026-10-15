@@ -70,7 +70,7 @@ img.brand-mark{width:44px;height:44px;border-radius:10px;background:#fff;object-
 .btn:hover{background:var(--rust-deep);transform:translateY(-2px)}
 .btn-dark{background:var(--ink)}
 .btn-dark:hover{background:#000}
-.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;font-size:20px;padding:8px 13px;cursor:pointer;color:var(--ink)}
+.burger{display:none;@media(max-width:520px){.header-cta{display:none}}background:none;border:1px solid var(--line);border-radius:10px;font-size:20px;padding:8px 13px;cursor:pointer;color:var(--ink)}
 .drawer-overlay{position:fixed;inset:0;background:rgba(26,21,18,.55);opacity:0;pointer-events:none;transition:opacity .3s;z-index:70}
 .drawer-overlay.open{opacity:1;pointer-events:auto}
 .drawer{position:fixed;top:0;right:-320px;width:300px;max-width:85vw;height:100%;background:var(--ink);color:var(--cream);z-index:71;transition:right .35s ease;padding:28px 26px;display:flex;flex-direction:column}
@@ -87,7 +87,7 @@ img.brand-mark{width:44px;height:44px;border-radius:10px;background:#fff;object-
 .hero-bg img{width:100%;height:112%;object-fit:cover;opacity:.62;will-change:transform}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,15,10,.88) 0%,rgba(20,15,10,.25) 55%,rgba(20,15,10,.35) 100%)}
 .hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 22px 70px;width:100%}
-.hero-kicker{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;overflow:hidden}
+.hero-kicker{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;overflow:hidden}@media(max-width:520px){.hero-kicker{font-size:11px;letter-spacing:2px;overflow:visible;white-space:normal}}
 .hero-kicker span{display:inline-block;animation:riseUp .9s cubic-bezier(.2,.7,.2,1) both}
 .hero h1{color:#fff;font-size:clamp(56px,11vw,150px);margin-bottom:14px}
 .hero h1 .line{display:block;overflow:hidden}
@@ -390,7 +390,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
       <a class="nl" href="#contact">Contact</a>
     </nav>
     <div style="display:flex;gap:10px;align-items:center">
-      <button class="btn" onclick="openIq()" style="padding:11px 24px">Get a Quote</button>
+      <button class="btn header-cta" onclick="openIq()" style="padding:11px 24px">Get a Quote</button>
       <button class="burger" onclick="openDrawer()" aria-label="Menu">☰</button>
     </div>
   </div>
@@ -802,7 +802,7 @@ function renderProducts(){
   <article class="pcard">
     <div class="pcard-img">
       <img src="${p.img}" alt="${p.name} — ${p.wt} bale" loading="lazy">
-      <span class="grade-badge ${gradeClass(p.grade)}">Grade ${p.grade}</span>
+      <span class="grade-badge ${gradeClass(p.grade)}">${/^grade\s/i.test(p.grade)?p.grade:"Grade "+p.grade}</span>
       <div class="pcard-quick"><button class="add-btn" style="width:100%;padding:13px" onclick="addIq('${p.id}')">+ Add to Inquiry</button></div>
     </div>
     <div class="pcard-body">
