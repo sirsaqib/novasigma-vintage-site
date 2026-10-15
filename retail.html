@@ -294,7 +294,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .size-note b{color:var(--ink)}
 
 /* retail extras */
-.retail-hero{background:var(--ink) url('images/retail/hero-rack.jpg') center/cover;position:relative;padding:150px 0 90px;overflow:hidden}
+.retail-hero{background:var(--ink) url('images/retail/hero-rack.webp') center/cover;position:relative;padding:150px 0 90px;overflow:hidden}
 .retail-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(20,16,12,.9),rgba(20,16,12,.62))}
 .retail-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(193,80,46,.28),transparent 60%)}
 .retail-hero h1{font-size:clamp(46px,7vw,92px);margin-bottom:12px;position:relative;z-index:2;color:#fff;text-shadow:0 2px 26px rgba(0,0,0,.5)}
@@ -364,7 +364,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <body>
 <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Hand-picked single pieces</span><span class="dot">◆</span><span>Every item graded &amp; photographed</span><span class="dot">◆</span><span>Ships worldwide</span><span class="dot">◆</span><span>Hand-picked single pieces</span><span class="dot">◆</span><span>Every item graded &amp; photographed</span><span class="dot">◆</span><span>Ships worldwide</span><span class="dot">◆</span></div></div>
 <header class="site-header"><div class="header-inner">
-<a class="brand" href="./"><img class="brand-mark" src="images/logo-sm.png" alt="Sigma Vintage Wear logo"><span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span></a>
+<a class="brand" href="./"><img class="brand-mark" src="images/logo-sm.webp" alt="Sigma Vintage Wear logo" width="256" height="256"><span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span></a>
 <nav class="nav"><a class="nl" href="index.html#bales">Wholesale</a><div class="nl-drop"><button class="nl drop-btn" aria-haspopup="true">Shop &#9662;</button><div class="drop-menu"><div class="drop-sec"><span>Categories</span><a href="vintage-tshirts-wholesale">T-Shirts</a><a href="vintage-hoodies-wholesale">Sweatshirts &amp; Hoodies</a><a href="vintage-jackets-wholesale">Jackets</a><a href="vintage-jeans-wholesale">Jeans &amp; Pants</a><a href="vintage-shirts-wholesale">Shirts &amp; Polos</a><a href="vintage-grails-wholesale">Rare &amp; Grails</a></div><div class="drop-sec"><span>Brands</span><a href="nike-vintage-clothing-wholesale">Nike</a><a href="adidas-vintage-clothing-wholesale">Adidas</a><a href="levis-vintage-clothing-wholesale">Levi&apos;s</a><a href="carhartt-vintage-clothing-wholesale">Carhartt</a><a href="tommy-hilfiger-vintage-clothing-wholesale">Tommy Hilfiger</a><a href="champion-vintage-clothing-wholesale">Champion</a></div></div></div><a class="nl" href="retail">Retail</a><a class="nl" href="index.html#brands">Brands</a><a class="nl" href="blog">Blog</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
 <div style="display:flex;gap:10px;align-items:center"><button class="btn" onclick="openCart()" style="padding:11px 24px">Cart (<span id="cartN">0</span>)</button><button class="burger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('drawerOv').classList.add('open')">☰</button></div>
 </div></header>
@@ -411,7 +411,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 </div></section>
 
 <footer><div class="wrap">
-<div class="foot-grid"><div class="foot-brand"><img src="images/logo-badge.png" alt="Sigma Vintage Wear — Wholesale Export badge" class="foot-badge" loading="lazy" width="120" height="120"><span class="brand-name" style="color:#fff">SIGMA<small>VINTAGE WEAR</small></span>
+<div class="foot-grid"><div class="foot-brand"><img src="images/logo-badge.webp" alt="Sigma Vintage Wear — Wholesale Export badge" class="foot-badge" loading="lazy" width="120" height="120"><span class="brand-name" style="color:#fff">SIGMA<small>VINTAGE WEAR</small></span>
 <p>Graded vintage clothing — wholesale bales &amp; hand-picked retail, from Karachi to the world.</p></div>
 <div><h4>Shop</h4><a href="index.html#bales">Wholesale bales</a><a href="retail">Retail shop</a><a href="index.html#brands">Shop by brand</a><a href="index.html#calculator">Profit calculator</a></div>
 <div><h4>Brands</h4><a href="nike-vintage-clothing-wholesale">Nike vintage</a><a href="adidas-vintage-clothing-wholesale">Adidas vintage</a><a href="levis-vintage-clothing-wholesale">Levi's vintage</a><a href="carhartt-vintage-clothing-wholesale">Carhartt vintage</a><a href="tommy-hilfiger-vintage-clothing-wholesale">Tommy Hilfiger vintage</a><a href="champion-vintage-clothing-wholesale">Champion vintage</a></div>
@@ -430,18 +430,18 @@ const WA="923231926873";
 const BRANDMAP={nike:"Nike",adidas:"Adidas",levis:"Levi's",carhartt:"Carhartt",tommy:"Tommy Hilfiger",champion:"Champion"};
 const JSON_BRANDS={"nike":1,"adidas":1,"levis":1,"carhartt":1,"tommy":1,"champion":1};
 const FALLBACK_PRODUCTS=[
-{id:"r1",name:"Vintage Nike Swoosh Tee",brand:"Nike",cat:"T-Shirts",size:"M",price:18,cond:"Light wash fade, no flaws",img:"images/retail/r1-tees.jpg"},
-{id:"r2",name:"Nike Vintage Hoodie",brand:"Nike",cat:"Hoodies",size:"L",price:35,cond:"Excellent, soft fleece",img:"images/retail/r2-hoodies.jpg"},
-{id:"r3",name:"Adidas Trefoil Tee",brand:"Adidas",cat:"T-Shirts",size:"M",price:16,cond:"Good, crisp print",img:"images/retail/r1-tees.jpg"},
-{id:"r4",name:"Adidas Track Top",brand:"Adidas",cat:"Jackets",size:"L",price:32,cond:"Excellent, 3-stripe",img:"images/retail/r4-shirts-rack.jpg"},
-{id:"r5",name:"Levi's 501 Jeans",brand:"Levi's",cat:"Jeans",size:"32W",price:38,cond:"Classic wash, excellent",img:"images/retail/r5-folded-jeans.jpg"},
+{id:"r1",name:"Vintage Nike Swoosh Tee",brand:"Nike",cat:"T-Shirts",size:"M",price:18,cond:"Light wash fade, no flaws",img:"images/retail/r1-tees.webp"},
+{id:"r2",name:"Nike Vintage Hoodie",brand:"Nike",cat:"Hoodies",size:"L",price:35,cond:"Excellent, soft fleece",img:"images/retail/r2-hoodies.webp"},
+{id:"r3",name:"Adidas Trefoil Tee",brand:"Adidas",cat:"T-Shirts",size:"M",price:16,cond:"Good, crisp print",img:"images/retail/r1-tees.webp"},
+{id:"r4",name:"Adidas Track Top",brand:"Adidas",cat:"Jackets",size:"L",price:32,cond:"Excellent, 3-stripe",img:"images/retail/r4-shirts-rack.webp"},
+{id:"r5",name:"Levi's 501 Jeans",brand:"Levi's",cat:"Jeans",size:"32W",price:38,cond:"Classic wash, excellent",img:"images/retail/r5-folded-jeans.webp"},
 {id:"r6",name:"Levi's Trucker Jacket",brand:"Levi's",cat:"Jackets",size:"M",price:45,cond:"Excellent, rigid denim",img:"images/retail/r6-levis-trucker.jpg"},
-{id:"r7",name:"Levi's Leather Trucker Jacket",brand:"Levi's",cat:"Jackets",size:"L",price:58,cond:"Genuine leather, vintage patina",img:"images/retail/r7-leather-jacket.jpg"},
-{id:"r8",name:"Carhartt Flannel Shirt",brand:"Carhartt",cat:"Shirts",size:"L",price:24,cond:"Heavy flannel, excellent",img:"images/retail/r4-shirts-rack.jpg"},
-{id:"r9",name:"Tommy Flag Sweatshirt",brand:"Tommy Hilfiger",cat:"Sweats",size:"L",price:28,cond:"Flag logo, excellent",img:"images/retail/r9-sweatshirts.jpg"},
-{id:"r10",name:"Tommy Hilfiger Polo",brand:"Tommy Hilfiger",cat:"Shirts",size:"M",price:22,cond:"Good, pique cotton",img:"images/retail/r10-polo.jpg"},
-{id:"r11",name:"Champion Reverse Weave Hoodie",brand:"Champion",cat:"Hoodies",size:"M",price:30,cond:"Excellent, heavy fleece",img:"images/retail/r2-hoodies.jpg"},
-{id:"r12",name:"Champion C-Logo Tee",brand:"Champion",cat:"T-Shirts",size:"S",price:15,cond:"Good, classic C print",img:"images/retail/r1-tees.jpg"}
+{id:"r7",name:"Levi's Leather Trucker Jacket",brand:"Levi's",cat:"Jackets",size:"L",price:58,cond:"Genuine leather, vintage patina",img:"images/retail/r7-leather-jacket.webp"},
+{id:"r8",name:"Carhartt Flannel Shirt",brand:"Carhartt",cat:"Shirts",size:"L",price:24,cond:"Heavy flannel, excellent",img:"images/retail/r4-shirts-rack.webp"},
+{id:"r9",name:"Tommy Flag Sweatshirt",brand:"Tommy Hilfiger",cat:"Sweats",size:"L",price:28,cond:"Flag logo, excellent",img:"images/retail/r9-sweatshirts.webp"},
+{id:"r10",name:"Tommy Hilfiger Polo",brand:"Tommy Hilfiger",cat:"Shirts",size:"M",price:22,cond:"Good, pique cotton",img:"images/retail/r10-polo.webp"},
+{id:"r11",name:"Champion Reverse Weave Hoodie",brand:"Champion",cat:"Hoodies",size:"M",price:30,cond:"Excellent, heavy fleece",img:"images/retail/r2-hoodies.webp"},
+{id:"r12",name:"Champion C-Logo Tee",brand:"Champion",cat:"T-Shirts",size:"S",price:15,cond:"Good, classic C print",img:"images/retail/r1-tees.webp"}
 ];
 let PRODUCTS=FALLBACK_PRODUCTS.slice();
 /* Central CMS: admin panel publishes to data/products.json */
@@ -464,7 +464,7 @@ function render(){
   document.querySelectorAll(".lm-item").forEach(c=>c.classList.toggle("active",c.dataset.b===brand));
 }
 /* Brand logo marquee — same auto-run + drag as homepage; click filters */
-const RB=[{b:"All",t:1},{b:"Nike",logo:"images/logos/nike.png"},{b:"Adidas",logo:"images/logos/adidas.png"},{b:"Levi's",logo:"images/logos/levis.png"},{b:"Carhartt",logo:"images/logos/carhartt.png"},{b:"Tommy Hilfiger",logo:"images/logos/tommy.png"},{b:"Champion",logo:"images/logos/champion.png"}];
+const RB=[{b:"All",t:1},{b:"Nike",logo:"images/logos/nike.webp"},{b:"Adidas",logo:"images/logos/adidas.webp"},{b:"Levi's",logo:"images/logos/levis.webp"},{b:"Carhartt",logo:"images/logos/carhartt.webp"},{b:"Tommy Hilfiger",logo:"images/logos/tommy.webp"},{b:"Champion",logo:"images/logos/champion.webp"}];
 const rTrack=document.getElementById("retailLogoTrack");
 const rLogos=RB.map(x=>x.t?`<button class="lm-item lm-all" data-b="All"><span>All</span></button>`:`<button class="lm-item" data-b="${x.b}" title="Show ${x.b}"><img src="${x.logo}" alt="${x.b}" loading="lazy" draggable="false"></button>`).join("");
 rTrack.innerHTML=rLogos+rLogos;
