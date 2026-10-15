@@ -7,7 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin — Sigma Vintage Wear</title>
 <meta name="robots" content="noindex,nofollow">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap"></noscript>
 <style>
 :root{--ink:#1c1712;--rust:#c1502e;--cream:#f4efe6;--sand:#e9e0d2;--line:#ddd2c0;--ok:#2e7d4f}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -55,7 +57,7 @@ td img{width:52px;height:52px;object-fit:cover;border-radius:8px}
 .search{max-width:300px}
 img.preview{max-width:180px;border-radius:10px;margin-top:8px;display:block}
 </style>
-</head>
+<style>.foot-badge{width:110px;height:110px;border-radius:50%;margin-bottom:14px;display:block}</style></head>
 <body>
 
 <!-- LOGIN -->
@@ -70,7 +72,7 @@ img.preview{max-width:180px;border-radius:10px;margin-top:8px;display:block}
 <!-- APP -->
 <div id="app" class="hidden">
 <header><div class="wrap">
-<h1 style="display:flex;align-items:center;gap:12px"><img src="images/logo.png" alt="Sigma" style="width:40px;height:40px;background:#fff;border-radius:8px;padding:2px">SIGMA <span style="color:var(--rust)">ADMIN</span></h1>
+<h1 style="display:flex;align-items:center;gap:12px"><img src="images/logo-sm.webp" alt="Sigma" style="width:40px;height:40px;background:#fff;border-radius:8px;padding:2px" width="256" height="256">SIGMA <span style="color:var(--rust)">ADMIN</span></h1>
 <button class="btn ghost small" style="color:#fff;border-color:#fff" onclick="location.reload()">Logout</button>
 </div></header>
 <div class="wrap">
@@ -374,7 +376,18 @@ async function publish(){
 <button class="btn ghost small" onclick="cfResolve(false)">Cancel</button>
 <button class="btn small" style="background:#b3261e" onclick="cfResolve(true)">Delete</button>
 </div></div></div>
-<style>.modal-ov{position:fixed;inset:0;background:rgba(20,16,10,.5);display:none;place-items:center;z-index:200}.modal-ov.open{display:grid}.modal{background:#fff;border-radius:14px;padding:26px;max-width:340px;width:calc(100% - 44px);box-shadow:0 20px 60px rgba(0,0,0,.25)}</style>
+<style>.modal-ov{position:fixed;inset:0;background:rgba(20,16,10,.5);display:none;place-items:center;z-index:200}.modal-ov.open{display:grid}.modal{background:#fff;border-radius:14px;padding:26px;max-width:340px;width:calc(100% - 44px);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+/* === SHOP dropdown === */
+.nl-drop{position:relative;display:inline-block}
+.drop-btn{background:none;border:none;cursor:pointer;font:inherit;color:inherit;padding:0}
+.drop-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);background:#fffdf8;border:1px solid rgba(0,0,0,.1);border-radius:16px;box-shadow:0 20px 55px rgba(0,0,0,.16);padding:20px 22px;display:flex;gap:30px;min-width:440px;opacity:0;pointer-events:none;transition:all .22s ease;z-index:200}
+.nl-drop:hover .drop-menu,.nl-drop:focus-within .drop-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.drop-sec{min-width:170px}
+.drop-sec>span{display:block;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#8a7a5f;margin-bottom:8px}
+.drop-sec a{display:block;padding:7px 0;color:#1c1712;text-decoration:none;font-size:14.5px;font-weight:500}
+.drop-sec a:hover{color:#b4502a}
+@media(max-width:900px){.nl-drop{display:none}}
+</style>
 <script>
 let _cf=null;
 function askConfirm(msg){document.getElementById("cfMsg").textContent=msg;document.getElementById("cfOv").classList.add("open");return new Promise(r=>{_cf=r;});}
