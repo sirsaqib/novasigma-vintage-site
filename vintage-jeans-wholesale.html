@@ -52,7 +52,7 @@ img.brand-mark{width:44px;height:44px;border-radius:10px;background:#fff;object-
 .btn:hover{background:var(--rust-deep);transform:translateY(-2px)}
 .btn-dark{background:var(--ink)}
 .btn-dark:hover{background:#000}
-.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;font-size:20px;padding:8px 13px;cursor:pointer;color:var(--ink)}
+.burger{display:none;@media(max-width:520px){.header-cta{display:none}}background:none;border:1px solid var(--line);border-radius:10px;font-size:20px;padding:8px 13px;cursor:pointer;color:var(--ink)}
 .drawer-overlay{position:fixed;inset:0;background:rgba(26,21,18,.55);opacity:0;pointer-events:none;transition:opacity .3s;z-index:70}
 .drawer-overlay.open{opacity:1;pointer-events:auto}
 .drawer{position:fixed;top:0;right:-320px;width:300px;max-width:85vw;height:100%;background:var(--ink);color:var(--cream);z-index:71;transition:right .35s ease;padding:28px 26px;display:flex;flex-direction:column}
@@ -278,7 +278,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .bp-hero-inner{position:relative;z-index:2}
 .blogo-wrap{background:#fff;border-radius:18px;padding:18px 34px;display:inline-block;margin-bottom:26px}
 .blogo-wrap img{height:72px;max-width:280px;object-fit:contain}
-.bp-hero h1{font-size:clamp(44px,7vw,88px);margin-bottom:12px}
+.bp-hero h1{font-size:clamp(44px,7vw,88px);margin-bottom:12px}@media(max-width:520px){.bp-hero h1{font-size:clamp(36px,10vw,44px)}}
 .bp-hero p{color:rgba(255,255,255,.78);max-width:620px;font-size:17px}
 .bp-stats{display:flex;gap:40px;flex-wrap:wrap;margin-top:30px}
 .bp-stats div b{display:block;font-family:'Anton';font-size:30px;color:var(--gold)}
@@ -290,7 +290,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 .cat-tile div{padding:16px 18px}
 .cat-tile h4{font-size:16px;font-weight:700}
 .cat-tile span{font-size:13px;color:var(--rust);font-weight:600}
-@media(max-width:900px){.cat-tiles{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.cat-tiles{grid-template-columns:repeat(2,1fr)}@media(max-width:560px){.cat-tiles{grid-template-columns:1fr}}}
 .size-note{background:var(--sand);border-radius:16px;padding:26px 30px;font-size:15px;color:#4c463c}
 .size-note b{color:var(--ink)}
 
@@ -345,7 +345,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <header class="site-header"><div class="header-inner">
 <a class="brand" href="./"><img class="brand-mark" src="images/logo-sm.webp" alt="Sigma Vintage Wear logo" width="256" height="256"><span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span></a>
 <nav class="nav"><a class="nl" href="index.html#bales">Bales</a><div class="nl-drop"><button class="nl drop-btn" aria-haspopup="true">Shop &#9662;</button><div class="drop-menu"><div class="drop-sec"><span>Categories</span><a href="vintage-tshirts-wholesale">T-Shirts</a><a href="vintage-hoodies-wholesale">Sweatshirts &amp; Hoodies</a><a href="vintage-jackets-wholesale">Jackets</a><a href="vintage-jeans-wholesale">Jeans &amp; Pants</a><a href="vintage-shirts-wholesale">Shirts &amp; Polos</a><a href="vintage-grails-wholesale">Rare &amp; Grails</a></div><div class="drop-sec"><span>Brands</span><a href="nike-vintage-clothing-wholesale">Nike</a><a href="adidas-vintage-clothing-wholesale">Adidas</a><a href="levis-vintage-clothing-wholesale">Levi&apos;s</a><a href="carhartt-vintage-clothing-wholesale">Carhartt</a><a href="tommy-hilfiger-vintage-clothing-wholesale">Tommy Hilfiger</a><a href="champion-vintage-clothing-wholesale">Champion</a></div></div></div><a class="nl" href="retail">Retail</a><a class="nl" href="index.html#brands">Brands</a><a class="nl" href="index.html#grades">Grades</a><a class="nl" href="blog">Blog</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
-<div style="display:flex;gap:10px;align-items:center"><button class="btn" onclick="openIq()" style="padding:11px 24px">Get a Quote</button><button class="burger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('drawerOv').classList.add('open')">☰</button></div>
+<div style="display:flex;gap:10px;align-items:center"><button class="btn header-cta" onclick="openIq()" style="padding:11px 24px">Get a Quote</button><button class="burger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('drawerOv').classList.add('open')">☰</button></div>
 </div></header>
 <div class="drawer-overlay" id="drawerOv" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
 <aside class="drawer" id="drawer"><button class="drawer-close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('drawerOv').classList.remove('open')">×</button>
