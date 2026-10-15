@@ -52,7 +52,7 @@ img.brand-mark{width:44px;height:44px;border-radius:10px;background:#fff;object-
 .btn:hover{background:var(--rust-deep);transform:translateY(-2px)}
 .btn-dark{background:var(--ink)}
 .btn-dark:hover{background:#000}
-.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;font-size:20px;padding:8px 13px;cursor:pointer;color:var(--ink)}
+.burger{display:none;@media(max-width:520px){.header-cta{display:none}}background:none;border:1px solid var(--line);border-radius:10px;font-size:20px;padding:8px 13px;cursor:pointer;color:var(--ink)}
 .drawer-overlay{position:fixed;inset:0;background:rgba(26,21,18,.55);opacity:0;pointer-events:none;transition:opacity .3s;z-index:70}
 .drawer-overlay.open{opacity:1;pointer-events:auto}
 .drawer{position:fixed;top:0;right:-320px;width:300px;max-width:85vw;height:100%;background:var(--ink);color:var(--cream);z-index:71;transition:right .35s ease;padding:28px 26px;display:flex;flex-direction:column}
@@ -344,7 +344,7 @@ footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
 <header class="site-header"><div class="header-inner">
 <a class="brand" href="./"><img class="brand-mark" src="images/logo-sm.webp" alt="Sigma Vintage Wear logo" width="256" height="256"><span class="brand-name">SIGMA<small>VINTAGE WEAR</small></span></a>
 <nav class="nav"><a class="nl" href="index.html#bales">Bales</a><div class="nl-drop"><button class="nl drop-btn" aria-haspopup="true">Shop &#9662;</button><div class="drop-menu"><div class="drop-sec"><span>Categories</span><a href="vintage-tshirts-wholesale">T-Shirts</a><a href="vintage-hoodies-wholesale">Sweatshirts &amp; Hoodies</a><a href="vintage-jackets-wholesale">Jackets</a><a href="vintage-jeans-wholesale">Jeans &amp; Pants</a><a href="vintage-shirts-wholesale">Shirts &amp; Polos</a><a href="vintage-grails-wholesale">Rare &amp; Grails</a></div><div class="drop-sec"><span>Brands</span><a href="nike-vintage-clothing-wholesale">Nike</a><a href="adidas-vintage-clothing-wholesale">Adidas</a><a href="levis-vintage-clothing-wholesale">Levi&apos;s</a><a href="carhartt-vintage-clothing-wholesale">Carhartt</a><a href="tommy-hilfiger-vintage-clothing-wholesale">Tommy Hilfiger</a><a href="champion-vintage-clothing-wholesale">Champion</a></div></div></div><a class="nl" href="retail">Retail</a><a class="nl" href="index.html#brands">Brands</a><a class="nl" href="index.html#grades">Grades</a><a class="nl" href="blog">Blog</a><a class="nl" href="index.html#faq">FAQ</a><a class="nl" href="index.html#contact">Contact</a></nav>
-<div style="display:flex;gap:10px;align-items:center"><button class="btn" onclick="openIq()" style="padding:11px 24px">Get a Quote</button><button class="burger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('drawerOv').classList.add('open')">☰</button></div>
+<div style="display:flex;gap:10px;align-items:center"><button class="btn header-cta" onclick="openIq()" style="padding:11px 24px">Get a Quote</button><button class="burger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('drawerOv').classList.add('open')">☰</button></div>
 </div></header>
 <div class="drawer-overlay" id="drawerOv" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
 <aside class="drawer" id="drawer"><button class="drawer-close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('drawerOv').classList.remove('open')">×</button>
